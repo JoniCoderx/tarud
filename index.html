@@ -1879,7 +1879,22 @@ const GAMUR_HEAD="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1B
   }
   function copyImg(){
     if(!lastCanvas) return;
-    try{ lastCanvas.toBlob(b=>{ if(b && navigator.clipboard && window.ClipboardItem){ navigator.clipboard.write([new ClipboardItem({'image/png':b})]).then(()=>showToast(T[lang].copiedImg)).catch(()=>showToast(T[lang].copyFail)); } else showToast(T[lang].copyFail); },'image/png'); }catch(e){ showToast(T[lang].copyFail); }
+    var canv=lastCanvas;
+    function blobP(){ return new Promise(function(res){ try{ canv.toBlob(function(b){ res(b); },'image/png'); }catch(e){ res(null); } }); }
+    function saveInstead(){ try{ downloadImg('tarud.png'); }catch(e){ showToast(T[lang].copyFail); } }
+    // Safari/iOS + Chrome: build the ClipboardItem with a Promise<Blob> synchronously inside the click gesture
+    if(navigator.clipboard && window.ClipboardItem){
+      try{
+        var item=new ClipboardItem({'image/png': blobP().then(function(b){ return b||new Blob([],{type:'image/png'}); })});
+        navigator.clipboard.write([item]).then(function(){ showToast(T[lang].copiedImg); }).catch(function(){ saveInstead(); });
+        return;
+      }catch(e){ /* promise-based ClipboardItem unsupported → try plain path */ }
+    }
+    blobP().then(function(b){
+      if(b && navigator.clipboard && window.ClipboardItem){
+        navigator.clipboard.write([new ClipboardItem({'image/png':b})]).then(function(){ showToast(T[lang].copiedImg); }).catch(function(){ saveInstead(); });
+      } else { saveInstead(); }
+    });
   }
   function downloadImg(name){ if(!lastCanvas) return; const a=document.createElement('a'); a.href=lastCanvas.toDataURL('image/png'); a.download=name; document.body.appendChild(a); a.click(); a.remove(); showToast(T[lang].saved); }
   function shareImage(platform){
