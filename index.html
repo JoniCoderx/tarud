@@ -286,6 +286,7 @@
   .logo{transform-origin:center;animation:logoFloat 5s ease-in-out infinite, logoBeat 2.6s ease-in-out infinite}
   @keyframes logoFloat{0%,100%{filter:drop-shadow(0 3px 8px rgba(0,0,0,.45)) drop-shadow(0 0 8px rgba(110,168,254,.15))}50%{filter:drop-shadow(0 5px 12px rgba(0,0,0,.5)) drop-shadow(0 0 14px rgba(110,168,254,.32))}}
   @keyframes logoBeat{0%,50%,100%{transform:scale(1) rotate(0deg)}12%{transform:scale(1.14) rotate(-5deg)}24%{transform:scale(1) rotate(0deg)}36%{transform:scale(1.09) rotate(4deg)}}
+  body.light .logo{animation:logoBeat 2.6s ease-in-out infinite;filter:drop-shadow(0 2px 4px rgba(47,111,224,.14))}
 
   /* motion + focus */
   .viewin{animation:viewin .34s cubic-bezier(.2,.7,.2,1) both}
@@ -394,7 +395,7 @@
   .footer{margin-top:14px;font-size:10.5px}
 
   /* live social proof */
-  .liveproof{display:flex;align-items:center;flex-wrap:wrap;gap:10px 12px;margin:0 2px 16px;padding:12px 15px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.03)}
+  .liveproof{display:flex;align-items:center;flex-wrap:nowrap;gap:12px;margin:0 2px 16px;padding:12px 15px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.03)}
   body.light .liveproof{background:rgba(0,0,0,.03)}
   .faces{display:flex;flex-direction:row}
   .faces .face{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid var(--bg);margin-inline-start:-11px;background:#2a2533;filter:grayscale(1) contrast(1.02);transition:opacity .5s ease,filter .5s ease}
