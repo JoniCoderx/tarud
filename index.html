@@ -1856,9 +1856,14 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
   function ttsSupported(){ return ('speechSynthesis' in window) && (typeof SpeechSynthesisUtterance!=='undefined'); }
   if(ttsSupported()){ try{ speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged=function(){}; }catch(e){} }
   function ttsIcon(on){ var b=$('ttsBtn'); if(!b) return; b.textContent=on?'⏹':'🔊'; b.setAttribute('aria-pressed',on?'true':'false'); b.setAttribute('aria-label', on?(lang==='he'?'עצור הקראה':'Stop reading'):(lang==='he'?'הקרא את התשובה':'Read the answer')); }
-  function pickVoice(){ let vs=[]; try{ vs=speechSynthesis.getVoices(); }catch(e){} const want=lang==='he'?'he':'en'; let pool=vs.filter(v=>v.lang&&v.lang.toLowerCase().indexOf(want)===0); if(lang==='he'){ const pref=pool.find(v=>/carmit|hebrew|עברית/i.test(v.name)); if(pref) return pref; } if(!pool.length) pool=vs;
-    const fem=/female|woman|girl|zira|tessa|samantha|karen|moira|serena|carmit|shira|hila/i, mal=/male|man|david|daniel|alex|fred|rishi|guy|asaf|tom/i;
-    const key=voicePref==='female'?fem:mal; return pool.find(v=>key.test(v.name)) || pool[0] || null; }
+  function pickVoice(){ let vs=[]; try{ vs=speechSynthesis.getVoices(); }catch(e){} const want=lang==='he'?'he':'en';
+    let pool=vs.filter(v=>v.lang&&v.lang.toLowerCase().indexOf(want)===0); if(!pool.length) pool=vs.slice(); if(!pool.length) return null;
+    var wantFem=voicePref==='female';
+    var fem=/female|woman|girl|zira|tessa|samantha|karen|moira|serena|carmit|shira|hila|noa|efrat|ava|jenny/i;
+    var mal=/male|man|david|daniel|alex|fred|rishi|guy|asaf|tom|amir|yaron|matan/i;
+    var natural=/natural|neural|premium|enhanced|google|siri|wavenet|studio/i; // prefer the most realistic voice the device has
+    function score(v){ var s=0; if(wantFem?fem.test(v.name):mal.test(v.name)) s+=4; if(natural.test(v.name)) s+=3; if(v.localService) s+=1; if(lang==='he'&&/carmit|hebrew|עברית/i.test(v.name)) s+=2; return s; }
+    return pool.slice().sort(function(a,b){ return score(b)-score(a); })[0]||null; }
   function stopSpeak(){ if(resumeTimer){clearInterval(resumeTimer);resumeTimer=null;} ttsQueue=[]; ttsIdx=0; try{ speechSynthesis.cancel(); }catch(e){} speaking=false; ttsIcon(false); }
   function ttsChunks(text){ const out=[]; let s=String(text||'').replace(/\s+/g,' ').trim(); while(s.length){ let cut=Math.min(180,s.length); if(cut<s.length){ const sp=s.lastIndexOf(' ',cut); if(sp>60) cut=sp; } out.push(s.slice(0,cut).trim()); s=s.slice(cut).trim(); } return out.filter(Boolean); }
   function speakChunk(){
@@ -1866,7 +1871,7 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
     if(ttsIdx>=ttsQueue.length){ stopSpeak(); return; }
     const u=new SpeechSynthesisUtterance(ttsQueue[ttsIdx]);
     u.lang=lang==='he'?'he-IL':'en-US'; const v=pickVoice(); if(v)u.voice=v;
-    u.rate=lang==='he'?0.98:1.0; u.pitch=voicePref==='female'?1.2:0.85;
+    u.rate=lang==='he'?1.0:1.02; u.pitch=voicePref==='female'?1.12:0.92;
     u.onend=function(){ ttsIdx++; if(speaking) speakChunk(); };
     u.onerror=function(){ ttsIdx++; if(speaking) speakChunk(); };
     try{ speechSynthesis.speak(u); }catch(e){ stopSpeak(); }
