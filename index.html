@@ -390,13 +390,13 @@
   .footer{margin-top:14px;font-size:10.5px}
 
   /* live social proof */
-  .liveproof{display:flex;align-items:center;gap:10px;margin:0 2px 14px;padding:8px 12px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.03)}
+  .liveproof{display:flex;align-items:center;gap:12px;margin:0 2px 16px;padding:12px 15px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.03)}
   body.light .liveproof{background:rgba(0,0,0,.03)}
   .faces{display:flex;flex-direction:row}
-  .faces .face{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid var(--bg);margin-inline-start:-8px;background:#2a2533}
+  .faces .face{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid var(--bg);margin-inline-start:-11px;background:#2a2533}
   .faces .face:first-child{margin-inline-start:0}
-  .livenum{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;line-height:1.2}
-  .livenum b{color:var(--ink);font-weight:700}
+  .livenum{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px;line-height:1.25}
+  .livenum b{color:var(--ink);font-weight:800;font-size:14px}
   .livedot{width:8px;height:8px;border-radius:50%;background:#57d39a;flex-shrink:0;animation:livepulse 1.6s infinite}
 
   /* add-once */
@@ -1501,8 +1501,8 @@ const GAMUR_HEAD="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1B
 
   function renderChars(){
     const box=$('charpick'); box.innerHTML='';
-    // RTL row → last item renders leftmost, so Dr. Meforak (lead) sits on the left
-    ['gamur','tarud','meforak'].forEach(k=>{
+    // RTL row → first item renders rightmost, so Dr. Meforak (lead) sits on the right
+    ['meforak','tarud','gamur'].forEach(k=>{
       const c=T[lang].chars[k];
       const b=document.createElement('button'); b.className='charcard'+(k===selChar?' on':'')+(k==='meforak'?' primary':''); b.setAttribute('data-char',k); b.setAttribute('aria-pressed',k===selChar?'true':'false');
       const crown=k==='meforak'?'<span class="crown">'+(lang==='he'?'★ הראשי':'★ Lead')+'</span>':'';
@@ -2103,7 +2103,7 @@ const GAMUR_HEAD="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1B
        +'<path d="M29.5 29.5c1.4 1.2 4.1 1.2 5.5 0" stroke="#8a5a4a" stroke-width="1.1" fill="none" stroke-linecap="round"/>'
        +'</svg>';
       return 'data:image/svg+xml;utf8,'+encodeURIComponent(s); }
-    var N=8, imgs=[]; for(var i=0;i<N;i++){ var im=new Image(); im.className='face'; im.alt=''; im.style.transition='opacity .45s'; im.src=av(i); f.appendChild(im); imgs.push(im); }
+    var N=6, imgs=[]; for(var i=0;i<N;i++){ var im=new Image(); im.className='face'; im.alt=''; im.style.transition='opacity .45s'; im.src=av(i); f.appendChild(im); imgs.push(im); }
     var seed=N; setInterval(function(){ var j=(Math.random()*N)|0, im=imgs[j]; im.style.opacity='.15'; var sd=seed++; setTimeout(function(){ im.src=av(sd); im.style.opacity='1'; },240); }, 2100);
   })();
   var liveN=14801; function bumpLive(){ liveN+=1+((Math.random()*3)|0); var el=$('liveCount'); if(el) el.textContent=liveN.toLocaleString(lang==='he'?'he-IL':'en-US'); } bumpLive(); setInterval(bumpLive,2600);
