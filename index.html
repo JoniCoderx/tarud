@@ -287,8 +287,6 @@
   .iconbtn{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink);font-size:18px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:.15s;flex-shrink:0}
   .iconbtn:hover{border-color:var(--gold-deep)}
   .iconbtn:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(110,168,254,.5)}
-  .iconbtn.break{flex:1;min-width:0;width:auto;border-radius:23px;padding:0 12px;gap:5px;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-color:rgba(255,107,129,.45);color:var(--heart);background:rgba(255,107,129,.06)}
-  .iconbtn.break:hover{border-color:var(--heart);background:rgba(255,107,129,.08)}
   body.light .iconbtn{background:rgba(0,0,0,.03)}
 
   /* help / crisis modal */
@@ -1434,7 +1432,7 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
   const views={input:$('input-view'),loading:$('loading-view'),result:$('result-view'),card:$('card-view'),meme:$('meme-view'),error:$('error-view')};
   function show(v){ Object.values(views).forEach(x=>x.classList.add('hidden')); v.classList.remove('hidden'); v.classList.remove('viewin'); void v.offsetWidth; v.classList.add('viewin'); window.scrollTo({top:0,behavior:'smooth'}); }
 
-  let lastData=null, lastScore=5, lastLevel=5, lastChar='tarud', lastCase='';
+  let lastData=null, lastScore=5, lastLevel=5, lastChar='meforak', lastCase='';
 
   async function fetchAI(payload,tries){
     let lastErr;
