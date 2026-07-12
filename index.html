@@ -484,6 +484,10 @@
   /* certificate button: warm orange so it pops */
   #copyBtn{background:linear-gradient(180deg,#ffab45,#f2760f)!important;color:#fff!important;box-shadow:0 10px 24px -12px rgba(242,118,15,.75)!important}
   #copyBtn:hover{filter:brightness(1.05)}
+  /* hype + read/song icons share one row (no standalone utility row) */
+  .hyperow{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+  .hyperow .btn.act.hype{flex:1;width:auto;margin-bottom:0}
+  .hyperow .iconbtn{width:50px;height:50px;flex-shrink:0}
 </style>
 </head>
 <body dir="rtl">
@@ -561,10 +565,9 @@
         <div class="block" id="tipBlock"><div class="k" id="tipK"></div><div class="v" id="tip"></div></div>
         <div class="closer" id="closer"></div>
       </div>
-      <button class="btn act hype" id="memeBtn"></button>
-      <div class="utilrow">
+      <div class="hyperow">
+        <button class="btn act hype" id="memeBtn"></button>
         <button class="iconbtn" id="ttsBtn" aria-label="hear it">🔊</button>
-        <button class="iconbtn" id="voiceBtn" aria-label="voice">♂</button>
         <button class="iconbtn" id="songBtn" aria-label="sad song">🎧</button>
       </div>
       <button class="shimonbtn" id="breakBtn" aria-label="support"></button>
@@ -1945,7 +1948,7 @@ const GAMUR_HEAD="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1B
   }
   function speak(){ if(!lastData) return; const parts=[lastData.verdict,lastData.message,lastData.tip,lastData.closer].filter(Boolean).join('. '); speakText(parts); }
   $('ttsBtn').onclick=speak;
-  $('voiceBtn').onclick=function(){ voicePref=voicePref==='male'?'female':'male'; $('voiceBtn').textContent=voicePref==='male'?'♂':'♀'; $('voiceBtn').setAttribute('aria-label', lang==='he'?('החלף קול — כרגע '+(voicePref==='male'?'גברי':'נשי')):((voicePref==='male'?'Male':'Female')+' voice')); if(speaking){ const rest=ttsQueue.slice(ttsIdx).join(' '); stopSpeak(); setTimeout(function(){ speakText(rest); },140); } };
+  // voice gender toggle removed — reading uses a natural male voice by default
 
   // Instagram Story 9:16
   function makeStoryCard(){
