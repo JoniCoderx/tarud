@@ -1,13 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1">
-<meta name="theme-color" content="#0b0a10">
+<meta name="theme-color" content="#f4efe7">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Tarud — Heartbreak Check</title>
+<title>טרוד — בדיקת שברון לב חינמית ואנונימית | Tarud</title>
+
+<!-- ===== SEO ===== -->
+<meta name="description" content="טרוד — בדיקת שברון לב חינמית, אנונימית ומיידית. מנוע רגשי חכם שמבין עברית טבעית, מסביר למה כואב ונותן לך פסק דין אישי מד״ר מפורק וממאסטר טרידות. עובד גם בלי אינטרנט.">
+<meta name="keywords" content="שברון לב, פרידה, איך לשכוח את האקסית, נו קונטקט, לעבור פרידה, בדיקת שברון לב, טרוד, מפורק, עצות אחרי פרידה, breakup, heartbreak">
+<meta name="author" content="Tarud">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="format-detection" content="telephone=no">
+<link rel="canonical" href="https://tarud.info/">
+
+<!-- ===== Open Graph (WhatsApp / Facebook) ===== -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tarud · טרוד">
+<meta property="og:title" content="טרוד — כמה טרוד אתה הלילה? 💔">
+<meta property="og:description" content="בדיקת שברון לב חינמית ואנונימית. תקבל פסק דין אישי, תבין למה כואב, ותצא מזה חזק יותר. בעברית, ובחינם.">
+<meta property="og:url" content="https://tarud.info/">
+<meta property="og:image" content="https://tarud.info/og.png">
+<meta property="og:image:secure_url" content="https://tarud.info/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="טרוד — בדיקת שברון לב">
+<meta property="og:locale" content="he_IL">
+
+<!-- ===== Twitter / X ===== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="טרוד — כמה טרוד אתה הלילה? 💔">
+<meta name="twitter:description" content="בדיקת שברון לב חינמית ואנונימית. פסק דין אישי, בעברית, בחינם.">
+<meta name="twitter:image" content="https://tarud.info/og.png">
+
+<!-- ===== Icons ===== -->
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+
+<!-- ===== Structured data ===== -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Tarud · טרוד","alternateName":"בדיקת שברון לב","url":"https://tarud.info/","applicationCategory":"HealthApplication","operatingSystem":"Any","inLanguage":["he","en"],"description":"בדיקת שברון לב חינמית ואנונימית עם מנוע רגשי מקומי שמבין עברית טבעית.","offers":{"@type":"Offer","price":"0","priceCurrency":"ILS"}}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Space+Grotesk:wght@400;500;600;700&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -67,6 +104,10 @@
   .ticks{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;margin-top:8px;direction:ltr}
 
   .chips{display:flex;flex-wrap:wrap;gap:8px}
+  /* mode chips: all four on one row so "תעלה לי את המורל" never drops down */
+  #modes{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+  #modes .chip{padding:8px 4px;font-size:11.5px;text-align:center;line-height:1.18;min-height:42px;display:flex;align-items:center;justify-content:center}
+  @media (max-width:360px){ #modes .chip{font-size:10.3px;padding:7px 2px;min-height:40px} }
   .chip{background:#0e0c14;border:1px solid var(--line);border-radius:99px;padding:9px 14px;font-size:13px;color:var(--muted);cursor:pointer;font-family:inherit;transition:.15s;font-weight:500}
   .chip:hover{color:var(--ink);border-color:#3b3547}
   .chip.on{background:rgba(110,168,254,.14);border-color:var(--gold-deep);color:var(--gold)}
@@ -424,7 +465,7 @@
   <div class="app">
     <div class="topbar">
       <div class="brand">
-        <svg class="logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Tarud">
+        <svg class="logo" id="logoBtn" role="button" tabindex="0" style="cursor:pointer" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="טרוד — חזרה לדף הבית">
           <defs>
             <linearGradient id="lg" x1="6" y1="6" x2="42" y2="44" gradientUnits="userSpaceOnUse">
               <stop stop-color="#9ac1ff"/><stop offset="0.5" stop-color="#6ea8fe"/><stop offset="1" stop-color="#2f6fe0"/>
@@ -437,6 +478,7 @@
         <div class="name"><span id="brandName">Tarud</span><span id="brandSub">heartbreak check</span></div>
       </div>
       <div class="controls">
+        <button class="theme-btn" id="soundBtn" aria-label="הפעל או השתק צלילים" aria-pressed="true">🔊</button>
         <button class="theme-btn" id="themeBtn" aria-label="toggle light or dark">🌙</button>
         <div class="lang">
           <button id="langEn" class="on">English</button>
@@ -1118,10 +1160,12 @@
       verdict=pk(GEN_VERDICTS,'vrd');
     }
 
-    // character flavor (light)
+    // character flavor (light) — varied openers so answers don't feel templated
     if(opts.char==='meforak'){
-      parts[0]='מבחינה מקצועית, '+parts[0];
-      if(tip) tip='מרשמ להיומ, '+tip;
+      parts[0]=pk(['מבחינה מקצועית, ','אבחונ מקצועי: ','מהזווית הקלינית, ','כמומחה מס׳ 1 אני קובע ש','מניסיונ עמ עשרות טרודימ, ','נסתכל על זה קלינית: '],'mopen')+parts[0];
+      if(tip) tip=pk(['מרשמ להיומ, ','הוראות טיפול, ','ההמלצה הקלינית שלי, ','מרשמ לערב, '],'mtip')+tip;
+    } else {
+      parts[0]=pk(['אחי, ','תשמע, ','בוא נדבר בגובה העינימ, ','מלב שבור אחד לשני, ','','אחי יקר, '],'topen')+parts[0];
     }
 
     var message=finalize(parts.filter(Boolean).join(' '));
@@ -1158,7 +1202,7 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
       q4:"Tell him the rest.",
       q4ph:"She said she needed space, then just… stopped. I keep checking if she's online. I feel stupid for still caring.",
       ask:"Get my verdict", asking:"reading it back…",
-      foot1:"Tarud and Dr. Meforak are AI speaking from the heart, not therapists. If things feel too heavy, please reach out to someone you trust.",
+      foot1:"Master Tarudot and Dr. Meforak are AI speaking from the heart, not therapists. If things feel too heavy, please reach out to someone you trust.",
       youSaid:"you", verdictWord:"verdict",
       card:"📸 My certificate", cardCopy:"Copy image 📋", cardDownload:"⬇ Download", ttsPlay:"Hear it 🔊", ttsStop:"Stop ⏹", story:"Share to Story 📲", cardBack:"Back", cardHint:"Copy, download, or share the card — or long-press to save.", saved:"Saved ✓", copiedImg:"Image copied ✓", whatsapp:"WhatsApp", instagram:"Instagram", igHint:"Image copied — open Instagram and paste it into your story or post.", meme:"🏆 Hype me up", memeCopy:"Copy image 📋", again:"🔄 Try again", chatPh:"What else is on your mind?", breakLabel:"Reach Shimon now", helpTitle:"🐴 Shimon the Horse", helpText:"If it feels heavy right now, you don't have to carry it alone. Reach out to someone you trust — and in an emergency, call your local emergency number. You can also message the Tarud team.", helpMsgPh:"Anything you want to add (optional)", helpWa:"Message Shimon 💬", helpEran:"Call a crisis line", helpFoot:"In immediate danger, call your local emergency number.",
       memeAnother:"Another one 😂", memeBack:"Back",
@@ -1250,7 +1294,7 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
       q4:"ספר לו את השאר.",
       q4ph:"היא אמרה שהיא צריכה מרחב, ואז פשוט… נעלמה. אני כל הזמן בודק אם היא מחוברת. אני מרגיש טיפש שעדיין אכפת לי.",
       ask:"תן לי את הפסק דין", asking:"קורא את זה שוב…",
-      foot1:"טרוד וד\"ר מפורק הם בינה מלאכותית שמדברת מהלב, לא מטפלים. אם זה נהיה כבד מדי, פנה למישהו שאתה סומך עליו.",
+      foot1:"מאסטר טרידות וד\"ר מפורק הם בינה מלאכותית שמדברת מהלב, לא מטפלים. אם זה נהיה כבד מדי, פנה למישהו שאתה סומך עליו.",
       youSaid:"אתה", verdictWord:"פסק דין",
       card:"📸 תעודת פרידה", cardCopy:"העתק תמונה 📋", cardDownload:"⬇ הורדה", ttsPlay:"תשמע את זה 🔊", ttsStop:"עצור ⏹", story:"שתף לסטורי 📲", cardBack:"חזרה", cardHint:"העתק, הורד או שתף את הכרטיס — או לחיצה ארוכה כדי לשמור.", saved:"נשמר ✓", copiedImg:"התמונה הועתקה ✓", whatsapp:"וואטסאפ", instagram:"אינסטגרם", igHint:"התמונה הועתקה — פתח אינסטגרם והדבק בסטורי או בפוסט.", meme:"🏆 פזר עליי מעט אליפות", memeCopy:"העתק תמונה 📋", again:"🔄 נסה שוב", chatPh:"מה עוד בא לך להגיד?", breakLabel:"פנה לשמעון הסוס במיידי", helpTitle:"🐴 שמעון הסוס", helpText:"שמעון הסוס עסוק בטירוף, אבל הוא תמיד עוזר לכל הטרודים — מרפא ומתקן אותם. שלח לו הודעה והוא יחזור אליך.", helpMsgPh:"משהו שבא לך להוסיף (לא חובה)", helpWa:"שלח הודעה לשמעון הסוס 🐴💬", helpEran:"התקשר לער\"ן 1201", helpFoot:"אם המצב חמור — התקשר לער\"ן 1201 או מד\"א 101.",
       memeAnother:"עוד אחד 😂", memeBack:"חזרה",
@@ -1286,7 +1330,16 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
                  "אלוף, גם הטלפון שלך מתחנן שתפסיק לרענן לה את הפרופיל. תרחם עליו.",
                  "אתה עכשיו בגרסת בטא של עצמך. הגרסה המלאה יוצאת בקרוב, והיא חתיך.",
                  "העבר שלך התקשר, הוא רוצה את הדרמה שלו בחזרה. תגיד לו שאתה עסוק.",
-                 "היא הייתה פרק. אתה הסדרה כולה. אל תבטל עונה שלמה בגלל פרק אחד."]},
+                 "היא הייתה פרק. אתה הסדרה כולה. אל תבטל עונה שלמה בגלל פרק אחד.",
+                 "אחי, הבלוק שלה זה לא סוף העולם — זה סתם חוסך לך דאטה.",
+                 "היא 'צריכה מרחב'? תן לה את היקום כולו. אתה נשאר פה ובונה אימפריה.",
+                 "אל תהיה הודעה שנשלחה ב-2 בלילה. תהיה הבן אדם שישן טוב ב-2 בלילה.",
+                 "כל סלב עבר פרידה מפוצצת. תראה אותם עכשיו. גם אתה בדרך.",
+                 "היא לא 'הבחורה שברחה'. היא הדמו. הגרסה המלאה עוד לא הותקנה.",
+                 "אתה לא מחכה לה. אתה בונה גרסה של עצמך שהיא תצטער שאיבדה.",
+                 "פרידה זה כמו חיסון: כואב רגע, מחסן אותך להמון שטויות בעתיד.",
+                 "תפסיק לנתח את ה'למה'. לפעמים התשובה היא פשוט: לא התאים, ותודה לאל.",
+                 "אתה לא הבעיה. אתה סתם נתת את הלב שלך לכתובת הלא נכונה. קורה."]},
         meforak:{name:"ד\"ר מפורק", tag:"המומחה מס׳ 1 לשברון לב · טיפל בעשרות נבגדים ונבגדות", from:"— ד\"ר מפורק, המומחה הבכיר לשברון לב", tipK:"המרשם של ד\"ר מפורק להלילה",
           memes:["אבחנה: מקרה חריף של 'היא הייתה האחת'. פרוגנוזה: תשרוד. בעל כורחך.",
                  "מבחינה קלינית, אתה 87% בסדר ו-13% עדיין מרענן לה את הפרופיל.",
@@ -1310,7 +1363,15 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
                  "אבחנה: בגידה. מרשם: להבין שהבגידה מספרת עליה, לא עליך. קבוע.",
                  "כמומחה, אני ממליץ למחוק את הצ'אט. זה כמו להוריד גבס — כואב רגע, מרפא לתמיד.",
                  "אתה לא 'הרוס'. אתה בשיקום. ואני, המומחה מס׳ 1, חותם על שחרור מלא.",
-                 "הרגש הזה נקרא 'התפכחות'. תופעת לוואי: הערכה עצמית גבוהה יותר בהמשך."]}
+                 "הרגש הזה נקרא 'התפכחות'. תופעת לוואי: הערכה עצמית גבוהה יותר בהמשך.",
+                 "מרשם דחוף: לכבות התראות, להדליק מוזיקה טובה, ולזכור שאתה פרס.",
+                 "מבחינה סטטיסטית, 10 מתוך 10 גברים ששרדו פרידה אומרים היום 'מזל שזה קרה'.",
+                 "אבחון: לב מנותח זמנית. צוות רפואי בדרך. שם הצוות: הזמן.",
+                 "כמומחה מס' 1, אני פוסק: הבעיה לא בך, הבעיה בטעם שלה. תיק סגור.",
+                 "רשמתי לך מנוחה, מים, וחוסר מוחלט של האינסטגרם שלה. מנה יומית.",
+                 "מבחינה מקצועית: מי שהלך — עשה לך טובה. תגיד תודה ותמשיך הלאה.",
+                 "הפרוגנוזה שלך מצוינת. תופעת לוואי אפשרית: להיות מבוקש בטירוף בעוד חודשיים.",
+                 "עובדה רפואית: אף גבר לא מת מפרידה. הרבה מתו קצת מבפנים ואז קמו חזקים יותר."]}
       },
       fallbacks:[
         {emoji:"🌧️",level:6,verdict:"מותר לך לכאוב",message:"להתגעגע אליה לא הופך אותך לחלש — זה אומר שזה היה אמיתי. הלילה אתה לא חייב להיות בסדר, רק לעבור אותו.",tip:"טלפון עם המסך למטה, כוס מים, לשכב. שום דבר לא צריך פתרון הלילה.",closer:"מחר זה יום יותר רך."},
@@ -1526,6 +1587,17 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
     }
   }
 
+  // ===== sound effects: 100% offline, synthesized with Web Audio (free, no files) =====
+  var _ac=null, soundOn=true;
+  try{ soundOn = localStorage.getItem('tarud_sound')!=='off'; }catch(e){}
+  function _actx(){ if(_ac) return _ac; try{ _ac=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ _ac=null; } return _ac; }
+  function _tone(freq,start,dur,type,gain){ var a=_actx(); if(!a) return; var t0=a.currentTime+start; var o=a.createOscillator(), g=a.createGain(); o.type=type||'sine'; o.frequency.setValueAtTime(freq,t0); g.gain.setValueAtTime(0.0001,t0); g.gain.exponentialRampToValueAtTime(gain||0.14,t0+0.025); g.gain.exponentialRampToValueAtTime(0.0001,t0+dur); o.connect(g); g.connect(a.destination); o.start(t0); o.stop(t0+dur+0.03); }
+  function _wake(){ var a=_actx(); if(a&&a.state==='suspended'){ try{ a.resume(); }catch(e){} } return a; }
+  function sfxReveal(lvl){ if(!soundOn||!_wake()) return; var base=lvl>=8?196:(lvl>=5?247:294); _tone(base,0,0.5,'triangle',0.15); _tone(base*1.5,0.10,0.55,'sine',0.11); _tone(base*2,0.19,0.5,'sine',0.07); }
+  function sfxPop(){ if(!soundOn||!_wake()) return; _tone(520,0,0.12,'square',0.09); _tone(790,0.05,0.14,'triangle',0.10); }
+  function sfxClick(){ if(!soundOn||!_wake()) return; _tone(330,0,0.07,'sine',0.07); }
+  (function(){ var b=$('soundBtn'); if(!b) return; b.textContent=soundOn?'🔊':'🔇'; b.setAttribute('aria-pressed',soundOn?'true':'false'); b.onclick=function(){ soundOn=!soundOn; try{ localStorage.setItem('tarud_sound',soundOn?'on':'off'); }catch(e){} b.textContent=soundOn?'🔊':'🔇'; b.setAttribute('aria-pressed',soundOn?'true':'false'); b.setAttribute('aria-label',soundOn?'השתק צלילים':'הפעל צלילים'); if(soundOn) sfxClick(); }; })();
+
   function renderResult(d,v,lvl){
     const t=T[lang]; const ch=t.chars[lastChar]; const isC=!!d.crisis;
     const ac=isC?{c:'#9fd0c9',soft:'rgba(159,208,201,.32)'}:accentFor(lvl);
@@ -1551,6 +1623,7 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
     convo=[{role:'assistant',content:[d.verdict,d.message,d.tip,d.closer].filter(Boolean).join(' ')}]; if($('chatLog'))$('chatLog').innerHTML=''; if($('addToggle'))$('addToggle').classList.remove('hidden'); if($('addBar'))$('addBar').classList.add('hidden'); if($('chatInput'))$('chatInput').value='';
     const card=$('resultCard'); card.classList.remove('anim'); void card.offsetWidth; card.classList.add('anim');
     show(views.result);
+    try{ if(!isC) sfxReveal(lvl); }catch(e){}
   }
 
   // meme
@@ -1561,6 +1634,7 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
     const c=makeMemeCard(memes[i]); lastCanvas=c; lastShareText=memes[i]+' — '+T[lang].chars[lastChar].name+' · tarud.info';
     try{ $('memeImg').src=c.toDataURL('image/png'); }catch(e){}
     show(views.meme);
+    try{ sfxPop(); }catch(e){}
   }
   $('memeBtn').onclick=showMeme;
   $('memeAnother').onclick=showMeme;
@@ -1570,6 +1644,9 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
   $('askBtn').onclick=ask;
   $('retryBtn').onclick=()=>show(views.input);
   $('againBtn').onclick=()=>{ try{if(window.speechSynthesis)speechSynthesis.cancel();}catch(e){} feeling.value=''; selSits.clear(); selTime=null; renderChips(); show(views.input); };
+  // Tarud logo → back to home (input) screen
+  function goHome(){ try{ stopSpeak(); }catch(e){} show(views.input); try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(e){ window.scrollTo(0,0); } }
+  (function(){ var lg=$('logoBtn'); if(!lg) return; lg.addEventListener('click',goHome); lg.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); goHome(); } }); })();
   feeling.addEventListener('keydown',e=>{ if((e.metaKey||e.ctrlKey)&&e.key==='Enter') ask(); });
 
   function fallbackCopy(txt){
@@ -1668,7 +1745,7 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
       if(b){ try{ var url=URL.createObjectURL(b); var a=document.createElement('a'); a.href=url; a.download='tarud.png'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){URL.revokeObjectURL(url);},4000); }catch(e){} }
       try{ if(b && navigator.clipboard && window.ClipboardItem){ navigator.clipboard.write([new ClipboardItem({'image/png':b})]).catch(function(){}); } }catch(e){}
       if(platform==='whatsapp'){ window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank'); showToast(lang==='he'?'התמונה נשמרה — צרף אותה בוואטסאפ 📎':'Image saved — attach it in WhatsApp 📎'); }
-      else { showToast(lang==='he'?'התמונה נשמרה והועתקה — פתח אינסטגרם והדבק 📲':'Saved & copied — open Instagram and paste 📲'); }
+      else { try{ window.open('https://www.instagram.com/','_blank'); }catch(e){} showToast(lang==='he'?'התמונה נשמרה והועתקה — נפתח אינסטגרם, הדבק בסטורי או בפוסט 📲':'Saved & copied — opening Instagram, paste it into a story or post 📲'); }
     },'image/png'); }catch(e){ if(platform==='whatsapp') window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank'); }
   }
   $('cardWa').onclick=()=>shareImage('whatsapp'); $('cardIg').onclick=()=>shareImage('instagram');
@@ -1835,9 +1912,11 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
     g.save(); g.translate(540,950); g.rotate(-0.05); g.strokeStyle=ac; g.lineWidth=5; roundRectC(g,-260,-72,520,144,22); g.stroke(); g.fillStyle=ac; g.font='600 84px '+F; g.textBaseline='middle'; g.fillText(bd.w,0,6); g.textBaseline='alphabetic'; g.restore();
     g.fillStyle=ac; g.font='600 32px '+S; g.fillText(t.qual[lastLevel]+' · '+lastLevel+'/10',540,1075);
     g.save(); g.textBaseline='middle'; g.font='84px sans-serif'; g.fillText(lastData.emoji||EMO[lastLevel],540,1180); g.textBaseline='alphabetic'; g.restore();
-    let y=1300;
-    g.fillStyle=ac; g.font='600 54px '+F; y=wrapText(g,lastData.verdict||'',540,y,900,64)+18;
-    g.fillStyle=P.msg; g.font='400 38px '+S; y=wrapText(g,lastData.message||'',540,y,920,54);
+    let y=1300; const sYTop=1300, sBudget=1690, sbV=54, sbM=38, slV=64, slM=54;
+    function sCH(sc){ return countLines(g,'600 '+(sbV*sc)+'px '+F,lastData.verdict||'',900)*(slV*sc)+18*sc + countLines(g,'400 '+(sbM*sc)+'px '+S,lastData.message||'',920)*(slM*sc); }
+    let ssc=1; if(sCH(1)>(sBudget-sYTop)) ssc=Math.max(0.7,(sBudget-sYTop)/sCH(1));
+    g.fillStyle=ac; g.font='600 '+(sbV*ssc)+'px '+F; y=wrapText(g,lastData.verdict||'',540,y,900,slV*ssc)+18*ssc;
+    g.fillStyle=P.msg; g.font='400 '+(sbM*ssc)+'px '+S; y=wrapText(g,lastData.message||'',540,y,920,slM*ssc);
     if(lastChar==='meforak' && lastCase){ g.fillStyle=P.meta; g.font='500 24px '+S; g.fillText(lastCase,540,1712); }
     g.fillStyle=P.sub; g.font='italic 500 28px '+F; g.fillText((rtl?'טופל ע"י ':'Seen by ')+ch.name,540,1752);
     g.fillStyle=P.foot; g.font='600 28px '+S; g.fillText('tarud.info',540,1792);
