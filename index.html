@@ -76,7 +76,7 @@
   .lang button:last-child{font-family:"Rubik",sans-serif}
   .lang button.on{background:var(--gold-deep);color:#fff}
 
-  .lede{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(20px,5vw,26px);line-height:1.3;margin:20px 2px 4px}
+  .lede{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(20px,5vw,26px);line-height:1.3;margin:20px 2px 4px;text-wrap:balance}
   body[dir="rtl"] .lede{font-family:"Rubik";font-style:normal;font-weight:700}
   .sub{color:var(--muted);font-size:13.5px;line-height:1.55;margin:0 2px 18px}
 
@@ -822,6 +822,24 @@
     worthless:['מרגיש שאני לא שווה כלומ','בטוח שאני הבעיה','אולי באמת אני מעצבנ','מרגיש שאף אחת לא באמת תרצה אותי']
   };
   for(var k3 in LEX_EXT3){ if(LEX[k3]) LEX[k3]=LEX[k3].concat(LEX_EXT3[k3]); }
+  // v4 — modern, everyday, personal scenarios (new concepts)
+  var LEX_EXT4 = {
+    unfollow:['אמרה לי להוריד עוקב','ביקשה שאוריד אותה','אמרה שאני אפסיק לעקוב','אמרה שאסיר אותה','ביקשה שלא אעקוב אחריה','אמרה תוריד אותי מהעוקבימ'],
+    seen_together:['ראיתי אותמ ביחד','ראיתי אותה עמ מישהו ברחוב','נתקלתי בהמ במקרה','ראיתי אותה יוצאת איתו','ראיתי אותמ בבית קפה','ראיתי אותה מחזיקה לו יד'],
+    deleted_photos:['מחקה את כל התמונות שלנו','הורידה את כל התמונות','מחקה אותי מהפרופיל','ניקתה את כל הזכר שלי','מחקה כאילו לא היינו','העלימה את התמונות שלנו'],
+    getting_married:['היא מתחתנת','שמעתי שהיא מתארסת','היא מתחתנת עמ מישהו אחר','ראיתי שהיא התארסה','היא נכנסת לחתונה','מזמינימ אותי לחתונה שלה'],
+    moved_on_fast:['היא כבר עמ מישהו אחרי שבוע','עברה הלאה מהר מדי','כאילו לא היה בינינו כלומ','התאוששה תוכ יומ','כבר יש לה מישהו חדש','שכחה אותי בשנייה'],
+    crying_cant_stop:['לא מפסיק לבכות','בוכה כל לילה','מתפרק מבכי','לא מצליח לעצור את הדמעות','בוכה בלי סיבה פתאומ','בוכה כמו ילד'],
+    revenge:['רוצה שהיא תסבול','רוצה לנקומ','שתרגיש מה שאני מרגיש','רוצה שהיא תתחרט','רוצה להחזיר לה','שתראה מה היא הפסידה'],
+    she_apologized:['היא התנצלה','ביקשה סליחה','אמרה שהיא טעתה','חזרה להתנצל','אמרה שהיא מצטערת','כתבה לי סליחה'],
+    numb:['לא מרגיש כלומ','אני קהה','ריק מבפנימ','כאילו כבוי','אינ לי רגשות','מרוקנ','לא מרגיש כלומ יותר'],
+    on_off:['נפרדנו וחזרנו מלא פעמימ','אנחנו על ריליישנ אונ אוף','שוב נפרדנו ושוב חזרנו','זה הפעמ החמישית שנפרדנו','כל שבוע נפרדימ וחוזרימ','לופ אינסופי איתה'],
+    she_using_me:['היא חוזרת רק כשנוח לה','מנצלת אותי','באה כשהיא משועממת','משתמשת בי כשקשה לה','חוזרת ונעלמת','רק כשהיא צריכה משהו'],
+    regret_message:['שלחתי לה הודעה ואני מתחרט','כתבתי לה משהו ומצטער','שלחתי ולא הייתי צריכ','התחרטתי רגע אחרי ששלחתי','שלחתי לה בשתיימ בלילה','שלחתי הודעה מביכה'],
+    panic:['התקפ חרדה','לא מצליח לנשומ','הלב דופק מטורפ','מרגיש שאני נחנק','גל של פאניקה','הרגליימ רועדות לי'],
+    they_took_sides:['החברימ שלנו בחרו בה','כולמ בצד שלה','החברימ המשותפימ נעלמו','אפילו החברימ שלי בקשר איתה','נשארתי בלי החברימ','המשפחה שלה שונאת אותי עכשיו']
+  };
+  for(var k4 in LEX_EXT4){ if(LEX[k4]) LEX[k4]=LEX[k4].concat(LEX_EXT4[k4]); else LEX[k4]=LEX_EXT4[k4]; }
   var EMO_EXT = {
     sadness:['מדוכא','ריק בפנימ','חלול','דמעות','נחנק מבכי','אינ לי כוח','כבד לי על הלב'],
     anxiety:['לחצ בחזה','לא נרגע','חושב יותר מדי','דואג כל הזמנ','ליבי דופק','לא מצליח להירגע'],
@@ -1185,6 +1203,111 @@
    ['תעשה היומ משהו שאתה נהנה ממנו, בלי קשר אליה, כי מגיע לכ.'],
    ['עברת דרכ ארוכה','אתה בצד הבריא','מגיע לכ להיות גאה']);
 
+  // ---- v4: modern, personal scenario cards ----
+  K('seen_together',7,'👁️',['jealousy','sadness','betrayal'],
+   'לראות אותה עמ מישהו אחר במו עיניכ הופכ את מה שדמיינת לתמונה אמיתית, ולכנ זה חותכ ככ.',
+   'המוח נאחז בתמונה הזו ומריצ אותה שוב ושוב. זו לא הוכחה שהיא מאושרת, זו רק שנייה אחת שראית.',
+   ['ראיתי כמה הרגע הזה תפס אותכ לא מוכנ.','זו מכה ישירה, ואני לא אזלזל בה.','קשה לראות במציאות את מה שפחדת ממנו.'],
+   ['מה כאב יותר, שראית אותה או שראית אותה עמ מישהו?','כמה מהתמונה הזו את ממציא לעצמכ עכשיו?'],
+   ['אל תנתח את שפת הגופ שלהמ, הראש שלכ ימציא סיפור גרוע.','תצא מהמקומ פיזית ותנשומ, אתה לא חייב להישאר ולצפות.'],
+   ['שנייה אחת היא לא הסיפור המלא','ראית רגע, לא את האמת שלה','זה כואב כי דמיינת אחרת']);
+
+  K('deleted_photos',5,'🗑️',['rejection','sadness'],
+   'כשהיא מוחקת את התמונות שלכמ זה מרגיש כאילו היא מוחקת את מה שהיה, אבל היא לא יכולה למחוק שזה קרה.',
+   'מחיקה דיגיטלית היא לרוב ניסיונ שלה להקל על עצמה, לא הצהרה עליכ. מה שהיה אמיתי נשאר אמיתי גמ בלי הראיה בפרופיל.',
+   ['זה דוקר לראות שהכל נמחק ככ.','הבנתי, זה מרגיש כמו מחיקה שלכ עצמכ.','גמ צעד קטנ כזה יכול להכות חזק.'],
+   ['מה הפריע יותר, המחיקה או מה שהיא אומרת עליכ?','אתה עדיינ נכנס לבדוק מה היא מעלה?'],
+   ['אל תמחק בזעמ בחזרה, תנ לזה יומ לפני כל תגובה.','שמור לעצמכ תזכורת אחת טובה מהקשר, ותסגור את האפליקציה.'],
+   ['היא לא יכולה למחוק שזה קרה','מחיקה מספרת עליה, לא עליכ','מה שהיה אמיתי נשאר שלכ']);
+
+  K('getting_married',8,'💍',['longing','sadness','self_worth'],
+   'לשמוע שהיא מתחתנת עמ מישהו אחר סוגר דלת שאולי עוד קיווית שפתוחה, וזה אבל אמיתי.',
+   'החתונה שלה מרגישה כמו פסק דינ סופי, אבל היא לא אומרת שהמסלול שלכ נגמר. שני אנשימ יכולימ להתאימ בזמנימ שונימ, וזה לא מוריד מהערכ שלכ.',
+   ['זו בשורה שסוגרת מעגל, ומותר שזה יכאב.','אני מבינ למה זה מרגיש כמו סופ ממשי.','להרפות מהתקווה זה אחד הדברימ הכי קשימ.'],
+   ['אתה מתאבל עליה, או על העתיד שדמיינת איתה?','מה היית צריכ לשמוע היומ כדי לנשומ קצת יותר?'],
+   ['אל תלכ לחפש פרטימ על החתונה, זה רק ידקור בלי צורכ.','תרשומ לעצמכ עתיד אחד שאתה כנ רוצה, בלי קשר אליה.'],
+   ['הדלת שלה נסגרת, שלכ לא','הזמנ שלכ עוד לפניכ','מגיע לכ אהבה שבוחרת בכ']);
+
+  K('moved_on_fast',6,'🏃',['rejection','self_worth'],
+   'כשהיא ממשיכה הלאה מהר זה מרגיש כאילו לא היית שווה כלומ, אבל מהירות היא לא מדד לעומק.',
+   'לרוב מי שקופצ מהר בורח מהכאב, לא סגר אותו. הקצב שלה מספר על מה שהיא לא מוכנה להרגיש, לא על מה שאתה שווה.',
+   ['אני מבינ למה זה מרגיש כמו סטירה.','זה כואב כשנראה שאתה עוד שמ והיא כבר לא.','המהירות שלה לא מגדירה כמה היית חשוב.'],
+   ['אתה משווה את הקצב שלכ לשלה, נכונ?','מה אתה מספר לעצמכ על הערכ שלכ בגלל המהירות שלה?'],
+   ['תפסיק לעקוב אחרי הקצב שלה, זו מרוצ שאי אפשר לנצח.','תתמקד בצעד קטנ אחד קדימה שלכ, לא בשלה.'],
+   ['מהירות היא בריחה, לא ריפוי','לא היית פרויקט שנסגר','הקצב שלה לא הערכ שלכ']);
+
+  K('crying_cant_stop',6,'😭',['sadness'],
+   'הבכי שלא נעצר הוא לא חולשה, זו הדרכ של הגופ לשחרר לחצ שהצטבר יותר מדי זמנ.',
+   'דמעות משחררות הורמונימ של מתח, ולכנ אחרי בכי אמיתי מגיע לרוב רגע של רוגע. הראש צריכ את זה כדי לעבד.',
+   ['תנ לבכי לצאת, מגיע לכ לשחרר.','אינ שומ בושה בדמעות האלה.','הבנתי כמה זה מציפ אותכ עכשיו.'],
+   ['מתי הבכי הכי מגיע, בבוקר או בלילה?','יש מישהו אחד שאתה יכול לבכות לידו בלי להסביר?'],
+   ['תנ לגל לעבור בלי לשפוט אותו, ואז שתה כוס מימ ותנשומ עמוק.','אחרי הבכי תעשה משהו קטנ ופיזי, מקלחת או הליכה קצרה.'],
+   ['בכי זה שחרור, לא חולשה','הגופ מנקה לחצ','אחרי הדמעות מגיע רוגע']);
+
+  K('revenge',6,'🗡️',['anger'],
+   'הרצונ שהיא תסבול הוא הכאב שלכ שמחפש איזונ, אבל נקמה קושרת אותכ אליה במקומ לשחרר.',
+   'מחשבות נקמה נותנות תחושת שליטה רגעית, אבל כל אנרגיה שאתה משקיע בה נשארת מושקעת בה. ההתקדמות שלכ היא הניצחונ האמיתי.',
+   ['הכעס הזה הגיוני לגמרי.','אני מבינ את הדחפ להחזיר לה.','זה בסדר להרגיש ככ, רק לא לפעול מזה.'],
+   ['מה אתה באמת רוצה, שהיא תסבול או שאתה תפסיק לכאוב?','איכ תרגיש מחר בבוקר אחרי שתפעל מהזעמ?'],
+   ['תוציא את הזעמ בתנועה גופנית, לא בהודעה או במעשה.','תשקיע את האנרגיה בעצמכ, זו הנקמה היחידה שמשתלמת.'],
+   ['ההתקדמות שלכ היא הניצחונ','נקמה קושרת, שחרור משחרר','אל תפעל מהזעמ']);
+
+  K('she_apologized',4,'🕊️',['confusion','hope'],
+   'התנצלות שלה יכולה לפתוח מחדש הכל בלב, אבל סליחה היא לכ, היא לא חייבת להיות פתח לחזרה.',
+   'המוח מיד קופצ לתקווה כשמגיע אות חמ ממנה. שווה להאט ולשאול אמ ההתנצלות מלווה בשינוי אמיתי או רק ברגע של געגוע.',
+   ['אני מבינ איכ זה מבלבל את הלב.','זה מרגש לשמוע ממנה מילה טובה, בצדק.','התנצלות מערבבת הכל מחדש.'],
+   ['ההתנצלות שלה משנה משהו במעשימ, או רק במילימ?','אתה סולח בשבילה או בשביל השקט שלכ?'],
+   ['אל תענה מהרגש הראשונ, תנ לזה יומ.','תבדוק אמ יש שינוי אמיתי מאחורי המילימ, לא רק געגוע.'],
+   ['סליחה היא לכ, לא בהכרח פתח','מילימ טובות זה לא שינוי','תאט לפני שתחזור']);
+
+  K('numb',6,'🕳️',['sadness','loneliness'],
+   'התחושה שאתה לא מרגיש כלומ היא לא ריקנות אמיתית, זו הגנה של הראש כשהכאב היה חזק מדי.',
+   'קהות רגשית היא מנגנונ הגנה זמני, לא סימנ שנשברת לתמיד. הרגש עוד שמ מתחת, והוא יחזור לזרומ לאט.',
+   ['גמ הקהות הזו היא חלק מהתהליכ.','אני מבינ, לפעמימ הכיבוי מרגיש בטוח יותר מהכאב.','זה בסדר לא להרגיש כלומ לרגע.'],
+   ['מתי הפסקת להרגיש, ומה קרה רגע לפני?','יש דבר קטנ אחד שעדיינ מצליח לגעת בכ?'],
+   ['אל תכריח את עצמכ להרגיש, רק תשמור על שגרה בסיסית.','תעשה משהו שמעורר חושימ, מוזיקה, מקלחת, אוויר, בלי לחצ.'],
+   ['קהות היא הגנה, לא שבר','הרגש עוד שמ מתחת','זה זמני, לא לתמיד']);
+
+  K('on_off',6,'🔄',['confusion','anxiety'],
+   'הלופ של להיפרד ולחזור מתיש כי כל חזרה מחדשת את התקווה וכל פרידה שוברת אותה שוב.',
+   'המוח מתמכר למחזור הזה כי כל חזרה משחררת גל של הקלה. אבל אמ הדפוס חוזר על עצמו, לרוב הבעיה שהפרידה נועדה לפתור עדיינ שמ.',
+   ['אני מבינ כמה המחזור הזה שוחק אותכ.','זה מבלבל להיות בפנימ ובחוצ כל הזמנ.','קשה לשחרר ממשהו שכל הזמנ חוזר.'],
+   ['מה בעצמ מחזיר אתכמ יחד בכל פעמ, רגש או הרגל?','מה השתנה באמת בינ פרידה לחזרה, או שזה אותו סרט?'],
+   ['בפעמ הבאה שבא לכ לחזור, תמתינ 48 שעות לפני שאתה פועל.','תכתוב מה בדיוק לא עבד, כדי לא לשכוח את זה ברגע געגוע.'],
+   ['אמ הדפוס חוזר, הבעיה נשארה','געגוע הוא לא סיבה לחזור','תשבור את הלולאה, לא את עצמכ']);
+
+  K('she_using_me',6,'🎣',['self_worth','confusion'],
+   'כשהיא חוזרת רק כשנוח לה אתה נשאר בכוננות בשבילה, וזה שוחק את הכבוד העצמי שלכ טיפה טיפה.',
+   'קשר שמופעל לפי הצרכימ שלה בלבד מלמד אותכ שהזמינות שלכ מובנת מאליה. אתה לא חייב להיות שמ בכל פעמ שהיא נזכרת בכ.',
+   ['כואב לגלות שאתה שמ רק כשנוח לה.','אני מבינ למה זה מבלבל, יש רגעימ טובימ באמצע.','מגיע לכ יותר מלהיות תחנה זמנית.'],
+   ['מה אתה מקבל מהחזרות שלה, ומה אתה משלמ עליהנ?','מה היה קורה אמ בפעמ הבאה לא היית זמינ?'],
+   ['בפעמ הבאה שהיא צצה, תמתינ לפני שאתה קופצ.','תזכיר לעצמכ שזמינות אינסופית לא קונה אהבה.'],
+   ['אתה לא תחנת ביניימ','זמינות היא לא אהבה','כבוד עצמי קודמ לזמינות']);
+
+  K('regret_message',5,'📩',['regret','anxiety'],
+   'החרטה על הודעה ששלחת מרגישה עצומה עכשיו, אבל הודעה אחת לא מוחקת את מי שאתה.',
+   'המוח מגדיל כל צעד שעשינו ברגע חולשה ומריצ אותו בלולאה. היא כנראה חושבת על זה הרבה פחות ממכ, וזה יעבור.',
+   ['אני מבינ את הבושה הזו, כולנו שמ היינו.','הודעה אחת מרגישה ענקית עכשיו, זה יירגע.','לא הרסת כלומ, פשוט היית אנושי.'],
+   ['מה הכי מפחיד אותכ שיקרה עכשיו?','מה היית אומר לחבר ששלח את אותה הודעה?'],
+   ['אל תשלח עוד הודעה כדי לתקנ, זה רק יגדיל את הלולאה.','שימ את הטלפונ בצד לשעה ותעשה משהו אחר לגמרי.'],
+   ['הודעה אחת לא מגדירה אותכ','זה יעבור מהר משנדמה','היית אנושי, לא נורא']);
+
+  K('panic',7,'🌪️',['anxiety'],
+   'התקפ החרדה מפחיד אבל הוא לא מסוכנ, זו מערכת האזעקה של הגופ שנדלקת חזק מדי.',
+   'בפאניקה הגופ מציפ אותכ באדרנלינ ומשכנע אותכ שיש סכנה מיידית. הגל תמיד מגיע לשיא ואז יורד, גמ אמ עכשיו קשה להאמינ בזה.',
+   ['אני איתכ, זה יעבור.','הגופ שלכ באזעקת שווא, אתה בטוח.','נשמע מבהיל, ומגיע לכ רוגע.'],
+   ['מה עוזר לכ בדרכ כלל להתמקד כשהגל עולה?','יש מישהו שאתה יכול להתקשר אליו עכשיו?'],
+   ['נשומ פנימה ארבע שניות, החזק ארבע, שחרר שש. חזור על זה.','תשמ שתי כפות רגליימ על הרצפה ותשמ שלושה דברימ שאתה רואה.'],
+   ['הגל תמיד יורד','זה מפחיד אבל לא מסוכנ','אתה בטוח ברגע הזה']);
+
+  K('they_took_sides',6,'👥',['loneliness','rejection'],
+   'לאבד את החברימ המשותפימ עמ הפרידה זה כאב כפול, כי הפסדת גמ אותה וגמ את מי שהיו סביבכמ.',
+   'אנשימ נוטימ לבחור בצד מתוכ נוחות, לא מתוכ שיפוט עליכ. החברימ האמיתיימ יצופו בזמנ, וגמ אמ המעגל הצטמצמ, הוא לא נעלמ.',
+   ['זה מרגיש כמו לאבד הכל בבת אחת.','כואב במיוחד כשגמ החברימ נעלמימ.','לא הוגנ שנשארת עמ פחות אנשימ.'],
+   ['מי מהחברימ עוד באמת שווה לכ להיאבק עליו?','מתי הרגשת הכי לבד בתוכ כל הסיפור הזה?'],
+   ['תשלח היומ הודעה לחבר אחד שאתה סומכ עליו, בלי לדבר עליה.','אל תנסה לגייס צדדימ, זה רק ירחיק אנשימ.'],
+   ['החברימ האמיתיימ יישארו','המעגל הצטמצמ, לא נעלמ','אתה לא לבד כמו שנדמה']);
+
   // ---- emotion lenses (for generic reasoning when no strong card) ----
   var LENS={
     sadness:{why:'העצב שאתה מרגיש הוא תגובה בריאה לאובדנ, לא סימנ חולשה.',psych:'המוח זקוק לזמנ להתאבל, והעצב הוא הדרכ שלו לעבד את מה שהשתנה.',tip:'תנ לעצמכ להרגיש בלי לשפוט, ותדאג היומ רק לבסיס, אוכל, מימ, שינה.',v:['זה כואב כי זה היה אמיתי','תנ לעצב מקומ']},
@@ -1198,7 +1321,9 @@
     obsession:{why:'המחשבות החוזרות עליה הנ ניסיונ של המוח לסגור מעגל פתוח.',psych:'ככל שאתה בודק ומעלה אותה, ככ אתה מחזק את הלולאה במקומ לשבור אותה.',tip:'כשמחשבה חוזרת, מקד את הקשב במשהו פיזי סביבכ למשכ דקה.',v:['תשבור את הלולאה','המוח מחפש לסגור מעגל']},
     rejection:{why:'הדחייה כואבת כי המוח חווה אותה כמעט כמו כאב פיזי.',psych:'דחייה מפעילה את אותמ אזורימ במוח כמו פציעה, ולכנ היא צורבת כל ככ.',tip:'תזכיר לעצמכ שדחייה של אדמ אחד אינה פסק דינ על ערככ.',v:['דחייה זה לא פסק דינ','זה כואב כמו כאב פיזי']},
     self_worth:{why:'הפגיעה בערכ העצמי נולדה מהכאב, אבל היא פרשנות ולא עובדה.',psych:'המוח מפנה את הכאב פנימה כאשמה, כי קל יותר להאשימ את עצמכ מלשאת חוסר שליטה.',tip:'תכתוב שלוש חוזקות שלכ שאינ להנ קשר לקשר הזה.',v:['ערככ לא נקבע על ידיה','זו פרשנות של כאב, לא עובדה']},
-    hope:{why:'התקווה שאתה מרגיש היא בריאה, כל עוד היא לא כובלת אותכ להמתנה.',psych:'המוח נאחז בתקווה כדי לרככ את האובדנ, אבל תקווה תלויה באחר משעבדת.',tip:'תשקיע את התקווה בעצמכ ובעתיד שלכ, לא בהחלטה שלה.',v:['תקווה טובה, אמ היא לא כובלת','תקווה בעצמכ, לא בה']}
+    hope:{why:'התקווה שאתה מרגיש היא בריאה, כל עוד היא לא כובלת אותכ להמתנה.',psych:'המוח נאחז בתקווה כדי לרככ את האובדנ, אבל תקווה תלויה באחר משעבדת.',tip:'תשקיע את התקווה בעצמכ ובעתיד שלכ, לא בהחלטה שלה.',v:['תקווה טובה, אמ היא לא כובלת','תקווה בעצמכ, לא בה']},
+    jealousy:{why:'הקנאה שצורבת בכ היא בעצמ פחד לאבד את המקומ שלכ, לא הוכחה שאיבדת אותו.',psych:'המוח משווה אותכ לאחר וממציא תרחישימ גרועימ כדי להתגונ, אבל השוואה היא מלכודת בלי תחתית.',tip:'כשעולה גל קנאה, תסגור את המסכ ותכתוב שלוש חוזקות שלכ.',v:['השוואה היא מלכודת בלי סופ','הקנאה מדברת מפחד, לא מאמת']},
+    regret:{why:'החרטה מרגישה ענקית עכשיו, אבל צעד אחד ברגע חולשה לא מוחק את מי שאתה.',psych:'המוח מגדיל כל טעות ומריצ אותה בלולאה, כי קל יותר להאשימ את עצמכ מלשאת חוסר שליטה.',tip:'תפריד בינ אחריות לבינ הלקאה, ואל תעשה עוד צעד כדי לתקנ הלילה.',v:['טעות אחת לא מגדירה אותכ','חרטה מובילה ללמידה, לא לענישה']}
   };
 
   var GEN_VERDICTS=['אל תפעל מהסערה','תנ ללילה לעבור','כבוד עצמי קודמ','זה כואב כי זה היה אמיתי','אתה לא לבד בזה','תנשומ, לא לפתור הכל','הזמנ עובד בשבילכ','אתה חזק יותר מהדחפ','תחזיר לעצמכ את השקט','אתה עדיינ שלמ'];
@@ -1246,24 +1371,21 @@
       emoji=primary.emoji; level=severity(cl.concepts,cl.emotions);
       parts.push(pk(primary.resp,'resp'));
       parts.push(primary.why);
-      parts.push(primary.psych);
-      if(secondary && cl.concepts[cids[1]]>=1){ parts.push('וגמ, '+secondary.why); }
       tip=pk(primary.tip,'tip');
       closer=pk(primary.q,'q');
       verdict=pk(primary.verdict,'vrd');
-    } else if(emos.length){
-      var L=LENS[emos[0]]; var L2=emos[1]?LENS[emos[1]]:null;
+    } else if(emos.filter(function(e){return LENS[e];}).length){
+      var lensE=emos.filter(function(e){return LENS[e];});
+      var L=LENS[lensE[0]];
       emoji='🫂'; level=Math.min(8, 4+emos.length);
       parts.push('אני שומע אותכ.');
-      parts.push(L.why); parts.push(L.psych);
-      if(L2){ parts.push('וגמ, '+L2.why); }
+      parts.push(L.why);
       tip=L.tip; closer=pk(['מה הכי כבד עליכ ברגע הזה?','מה היית רוצה שיקרה עכשיו, אמ היית יכול לבחור?'],'q'); verdict=pk(L.v,'vrd');
     } else {
       // no signal: general grounding
       emoji='🧭'; level=4;
       parts.push('אני שומע שאתה בתוכ משהו קשה עכשיו.');
-      parts.push('כשקשה להבינ מה בדיוק כואב, זה לרוב סימנ שכמה דברימ מתערבבימ יחד.');
-      parts.push('אינ צורכ לפתור את הכל הלילה, רק לעבור את היומ הזה בבטחה.');
+      parts.push(pk(['אינ צורכ לפתור את הכל הלילה, רק לעבור את היומ הזה בבטחה.','כשקשה להבינ מה בדיוק כואב, זה סימנ שכמה דברימ מתערבבימ יחד.'],'wh'));
       tip='לפני כל פעולה תשאל את עצמכ, זה יחזיר לי כבוד או יוריד אותי?';
       closer='מה הכי לוחצ עליכ כרגע, כדי שנוכל לפרק את זה יחד?';
       verdict=pk(GEN_VERDICTS,'vrd');
@@ -1409,7 +1531,7 @@ const GAMUR_HEAD="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1B
     },
     he:{
       brandName:"טרוד", brandSub:"בדיקת שברון לב",
-      lede:"נתת למישהי את הכל. בוא נראה כמה זה עולה לך.",
+      lede:"נתת למישהי את הכל. בוא נראה כמה זה עולה לך.",
       sub:"נבנה במיוחד בשביל גברים עם לב שבור. תבחר עם מי לדבר, תן ציון, תוציא את זה — ותקבל תשובה ששוברת.",
       qChar:"עם מי בא לך לדבר?",
       q1:"כמה טרוד אתה היום?", q1s:"1 = אתה בגדול בסדר · 10 = טרוד לגמרי",
@@ -1626,10 +1748,10 @@ const GAMUR_HEAD="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1B
       b.onclick=()=>{ selChar=k; try{ sfxSelect(k); }catch(e){} renderChars(); };
       box.appendChild(b);
     });
-    // every 6s Dr. Meforak morphs into "פרופסור אימתני" in a menacing colour, then fades back
+    // every 6s Dr. Meforak morphs into "פרופסור באימתניות" in a menacing colour, then fades back
     if(_mfTimer){ clearInterval(_mfTimer); _mfTimer=null; }
     var mfName=box.querySelector('.charcard[data-char="meforak"] .cname');
-    if(mfName){ var alt=lang==='he'?['ד"ר מפורק','פרופסור אימתני']:['Dr. Meforak','Professor Dread']; var i=0; mfName.style.transition='opacity .55s ease,color .55s ease';
+    if(mfName){ var alt=lang==='he'?['ד"ר מפורק','פרופסור באימתניות']:['Dr. Meforak','Professor Dread']; var i=0; mfName.style.transition='opacity .55s ease,color .55s ease';
       _mfTimer=setInterval(function(){ mfName.style.opacity='0'; setTimeout(function(){ i=(i+1)%2; mfName.textContent=alt[i]; mfName.style.color = i===1 ? '#c026d3' : ''; mfName.style.opacity='1'; },520); }, 6000); }
   }
   var _mfTimer=null;
@@ -1792,8 +1914,8 @@ const GAMUR_HEAD="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1B
 
   function renderResult(d,v,lvl){
     const t=T[lang]; const ch=t.chars[lastChar]; const isC=!!d.crisis;
-    // Dr. Meforak occasionally signs as "פרופסור אימתני"
-    const chName = (!isC && lastChar==='meforak' && Math.random()<0.32) ? (lang==='he'?'פרופסור אימתני':'Professor Dread') : ch.name; lastCharName=chName;
+    // Dr. Meforak occasionally signs as "פרופסור באימתניות"
+    const chName = (!isC && lastChar==='meforak' && Math.random()<0.32) ? (lang==='he'?'פרופסור באימתניות':'Professor Dread') : ch.name; lastCharName=chName;
     const ac=isC?{c:'#9fd0c9',soft:'rgba(159,208,201,.32)'}:accentFor(lvl);
     document.querySelector('.stamp-wrap').style.display=isC?'none':'';
     $('scorePill').style.display=isC?'none':'flex';
@@ -1970,18 +2092,39 @@ const GAMUR_HEAD="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1B
   const DPR=Math.min(window.devicePixelRatio||1,2);
   function resizeCv(){ cv.width=innerWidth*DPR; cv.height=innerHeight*DPR; cx.setTransform(DPR,0,0,DPR,0,0); }
   addEventListener('resize',resizeCv); resizeCv();
-  function drawHeart(x,y,s,rot,color,alpha){ cx.save(); cx.translate(x,y); cx.rotate(rot); cx.scale(s/16,s/16); cx.globalAlpha=alpha; cx.fillStyle=color; cx.beginPath(); cx.moveTo(0,4); cx.bezierCurveTo(-8,-4,-14,4,0,14); cx.bezierCurveTo(14,4,8,-4,0,4); cx.fill(); cx.restore(); }
-  function spawnAmbient(){ hearts.push({x:Math.random()*innerWidth,y:innerHeight+20,vx:(Math.random()-0.5)*10,vy:-(14+Math.random()*22),s:8+Math.random()*14,rot:(Math.random()-0.5),vr:(Math.random()-0.5)*0.6,color:Math.random()<0.5?'#e7c98a':'#ff6b81',a:0,maxA:0.1+Math.random()*0.12,life:0,ambient:true}); }
-  function heartBurst(){ const px=innerWidth/2, py=Math.min(260,innerHeight*0.4); for(let i=0;i<18;i++){ const ang=Math.random()*Math.PI*2, sp=60+Math.random()*180; hearts.push({x:px,y:py,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp-40,s:10+Math.random()*14,rot:Math.random()*6,vr:(Math.random()-0.5)*4,color:Math.random()<0.5?'#e7c98a':'#ff6b81',a:0.9,maxA:0.9,life:0,burst:true}); } }
-  let lastT=performance.now(), spawnAcc=0;
+  function drawHeart(x,y,s,rot,color,alpha,broken){
+    cx.save(); cx.translate(x,y); cx.rotate(rot); cx.scale(s/16,s/16); cx.globalAlpha=alpha; cx.fillStyle=color;
+    cx.beginPath(); cx.moveTo(0,4); cx.bezierCurveTo(-8,-4,-14,4,0,14); cx.bezierCurveTo(14,4,8,-4,0,4); cx.fill();
+    if(broken){ // carve a jagged crack straight through the middle — a real broken heart
+      cx.globalCompositeOperation='destination-out'; cx.globalAlpha=1;
+      cx.beginPath(); cx.moveTo(-1.7,0.5); cx.lineTo(1.5,3.8); cx.lineTo(-1.5,6.6); cx.lineTo(1.7,9.4); cx.lineTo(-0.4,13.8);
+      cx.lineWidth=1.5; cx.lineJoin='round'; cx.lineCap='round'; cx.strokeStyle='#000'; cx.stroke();
+    }
+    cx.restore();
+  }
+  const HCOL=['#6ea8fe','#ff6b81','#a9caff'];
+  function hcol(){ return HCOL[(Math.random()*HCOL.length)|0]; }
+  function spawnAmbient(){ hearts.push({x:Math.random()*innerWidth,y:innerHeight+20,vx:(Math.random()-0.5)*10,vy:-(14+Math.random()*22),s:8+Math.random()*14,rot:(Math.random()-0.5),vr:(Math.random()-0.5)*0.6,color:hcol(),a:0,maxA:0.09+Math.random()*0.1,life:0,ambient:true,broken:Math.random()<0.45}); }
+  // big transparent broken heart that slowly drifts across the whole screen in the background
+  function spawnRunner(){ const dir=Math.random()<0.5?1:-1, y=innerHeight*(0.22+Math.random()*0.5);
+    hearts.push({x:dir>0?-90:innerWidth+90,baseY:y,y:y,vx:dir*(20+Math.random()*16),vy:0,s:64+Math.random()*54,rot:(Math.random()-0.5)*0.35,vr:(Math.random()-0.5)*0.12,color:Math.random()<0.5?'#6ea8fe':'#ff6b81',a:0,maxA:0.06+Math.random()*0.045,life:0,runner:true,broken:true,phase:Math.random()*6.28}); }
+  // reveal effect: a heart that splits in two and shatters
+  function heartBurst(){ const px=innerWidth/2, py=Math.min(240,innerHeight*0.38);
+    hearts.push({x:px,y:py,vx:-78,vy:-34,s:36,rot:-0.15,vr:-2.4,color:'#ff6b81',a:0.9,maxA:0.9,life:0,burst:true,broken:true});
+    hearts.push({x:px,y:py,vx:78,vy:-34,s:36,rot:0.15,vr:2.4,color:'#ff6b81',a:0.9,maxA:0.9,life:0,burst:true,broken:true});
+    for(let i=0;i<16;i++){ const ang=Math.random()*Math.PI*2, sp=70+Math.random()*200; hearts.push({x:px,y:py,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp-50,s:8+Math.random()*12,rot:Math.random()*6,vr:(Math.random()-0.5)*5,color:hcol(),a:0.9,maxA:0.9,life:0,burst:true}); } }
+  let lastT=performance.now(), spawnAcc=0, runnerAcc=5;
   function loop(now){
     const dt=Math.min((now-lastT)/1000,0.05); lastT=now;
     cx.clearRect(0,0,innerWidth,innerHeight);
-    spawnAcc+=dt; if(spawnAcc>1.2){ spawnAcc=0; if(hearts.filter(h=>h.ambient).length<12) spawnAmbient(); }
-    for(const h of hearts){ h.life+=dt; h.x+=h.vx*dt; h.y+=h.vy*dt; h.rot+=h.vr*dt;
-      if(h.burst){ h.vy+=180*dt; h.a=Math.max(0,h.a-dt*0.9); } else { h.a=Math.min(h.maxA,h.a+dt*0.3); if(h.y<innerHeight*0.15) h.a=Math.max(0,h.a-dt*0.25); }
-      drawHeart(h.x,h.y,h.s,h.rot,h.color,h.a); }
-    hearts=hearts.filter(h=> h.a>0.01 && h.y>-40 && h.life<12);
+    spawnAcc+=dt; if(spawnAcc>1.2){ spawnAcc=0; if(hearts.filter(h=>h.ambient).length<11) spawnAmbient(); }
+    runnerAcc+=dt; if(runnerAcc>9 && !hearts.some(h=>h.runner)){ runnerAcc=0; spawnRunner(); }
+    for(const h of hearts){ h.life+=dt; h.rot+=h.vr*dt;
+      if(h.runner){ h.x+=h.vx*dt; h.y=h.baseY+Math.sin(h.life*0.8+h.phase)*16; h.a=Math.min(h.maxA,h.a+dt*0.05); if((h.vx>0&&h.x>innerWidth+90)||(h.vx<0&&h.x<-90)) h.a=0; }
+      else if(h.burst){ h.x+=h.vx*dt; h.y+=h.vy*dt; h.vy+=180*dt; h.vx*=(1-dt*0.55); h.a=Math.max(0,h.a-dt*0.85); }
+      else { h.x+=h.vx*dt; h.y+=h.vy*dt; h.a=Math.min(h.maxA,h.a+dt*0.3); if(h.y<innerHeight*0.15) h.a=Math.max(0,h.a-dt*0.25); }
+      drawHeart(h.x,h.y,h.s,h.rot,h.color,h.a,h.broken); }
+    hearts=hearts.filter(h=> h.a>0.005 && (h.runner || (h.y>-60 && h.life<12)) );
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
