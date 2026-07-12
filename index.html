@@ -1319,7 +1319,7 @@ const GAMUR_HEAD="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1B
                  "Strong enough to lift the whole gym. Not strong enough to skip her story.",
                  "'We can still be friends' — bro just declared war.",
                  "My recovery: 60 days. Her posting one photo: back to day one."]},
-        meforak:{name:"Dr. Meforak", tag:"world's #1 heartbreak expert", from:"— Dr. Meforak, top heartbreak expert", tipK:"Dr. Meforak's prescription for tonight",
+        meforak:{name:"Dr. Meforak", tag:"#1 expert at solving any problem", from:"— Dr. Meforak, top heartbreak expert", tipK:"Dr. Meforak's prescription for tonight",
           memes:["Diagnosis: acute case of 'she was the one.' Prognosis: you'll live. Reluctantly.",
                  "Clinically, you are 87% fine and 13% still refreshing her profile.",
                  "As the world's #1 heartbreak expert, my prescription is: water, sleep, and the block button.",
@@ -1450,7 +1450,7 @@ const GAMUR_HEAD="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1B
                  "אתה לא 'רומנטיקן חסר תקנה'. אתה בנאדם עם לב טוב מדי בשביל הכתובת הזאת.",
                  "הכי אירוני: היא לימדה אותך בדיוק איזו בחורה אתה כבר לא מוכן לקבל. תודה, מורה.",
                  "אתה עכשיו 'רווק' — זה לא סטטוס, זה קידום. ברכות על ההעלאה בדרגה."]},
-        meforak:{name:"ד\"ר מפורק", tag:"מומחה מס׳ 1 לשברון לב", from:"— ד\"ר מפורק, המומחה הבכיר לשברון לב", tipK:"המרשם של ד\"ר מפורק להלילה",
+        meforak:{name:"ד\"ר מפורק", tag:"מומחה מספר אחת לפתרון בעיות", from:"— ד\"ר מפורק, המומחה הבכיר לשברון לב", tipK:"המרשם של ד\"ר מפורק להלילה",
           memes:["אבחנה: מקרה חריף של 'היא הייתה האחת'. פרוגנוזה: תשרוד. בעל כורחך.",
                  "מבחינה קלינית, אתה 87% בסדר ו-13% עדיין מרענן לה את הפרופיל.",
                  "כמומחה מספר 1 בעולם לשברון לב, המרשם שלי: מים, שינה, וכפתור החסימה.",
@@ -1604,11 +1604,11 @@ const GAMUR_HEAD="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1B
       b.onclick=()=>{ selChar=k; try{ sfxSelect(k); }catch(e){} renderChars(); };
       box.appendChild(b);
     });
-    // Dr. Meforak's name gently fades between his two titles
+    // every 6s Dr. Meforak morphs into "פרופסור אימתני" in a menacing colour, then fades back
     if(_mfTimer){ clearInterval(_mfTimer); _mfTimer=null; }
     var mfName=box.querySelector('.charcard[data-char="meforak"] .cname');
-    if(mfName){ var alt=lang==='he'?['ד"ר מפורק','פרופסור אימתני']:['Dr. Meforak','Professor Dread']; var i=0; mfName.style.transition='opacity .55s ease';
-      _mfTimer=setInterval(function(){ mfName.style.opacity='0'; setTimeout(function(){ i=(i+1)%2; mfName.textContent=alt[i]; mfName.style.opacity='1'; },520); }, 3400); }
+    if(mfName){ var alt=lang==='he'?['ד"ר מפורק','פרופסור אימתני']:['Dr. Meforak','Professor Dread']; var i=0; mfName.style.transition='opacity .55s ease,color .55s ease';
+      _mfTimer=setInterval(function(){ mfName.style.opacity='0'; setTimeout(function(){ i=(i+1)%2; mfName.textContent=alt[i]; mfName.style.color = i===1 ? '#c026d3' : ''; mfName.style.opacity='1'; },520); }, 6000); }
   }
   var _mfTimer=null;
   function chipRow(boxId, arr, isSel, onPick){
@@ -1721,14 +1721,10 @@ const GAMUR_HEAD="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1B
     const user="Self-rated heartbreak: "+v+"/10 ("+T.en.labels[v]+")."+(sitsLabels.length?(" Situation: "+sitsLabels.join(", ")+"."):"")+(timeLabel?(" Time since it ended: "+timeLabel+"."):"")+" In his words: \""+text+"\"";
 
     let parsed=null;
-    // Try a real free AI (Puter) so the reply directly addresses what he wrote; fall back to the local engine.
-    try{
-      var aiTxt = await puterAI([{role:'system',content:system},{role:'user',content:user}], 'gpt-4o-mini', 12000);
-      var aiObj = parseAnswerJSON(aiTxt);
-      if(aiObj && aiObj.message){ parsed=aiObj; }
-    }catch(e){}
-    if(!parsed){ parsed = lang==='he' ? reasonAnswer(text,{char:selChar,mode:selMode}) : randFallback(); }
-    try{ await new Promise(function(r){ setTimeout(r,120); }); }catch(e){}
+    // main verdict stays instant via the local engine (fast, branded); the real AI lives in the follow-up chat
+    if(lang==='he'){ parsed=reasonAnswer(text,{char:selChar,mode:selMode}); }
+    else { parsed=randFallback(); }
+    try{ await new Promise(function(r){ setTimeout(r,240); }); }catch(e){}
     if(parsed && (parsed.message||parsed.verdict)){
       lastData=parsed; var _lv=parseInt(parsed.level,10); lastLevel=(_lv>=1&&_lv<=10)?_lv:v;
       renderResult(parsed,v,lastLevel); heartBurst();
@@ -2237,7 +2233,7 @@ const GAMUR_HEAD="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1B
     var typing=addChatMsg('bot','…'); typing.classList.add('typing');
     var sys=chatSystem()+(chatCtx()?(' The verdict you already gave him: '+chatCtx()):'');
     var recent; try{ recent=(convo&&convo.length)?convo.slice(-10):[{role:'user',content:txt}]; }catch(e){ recent=[{role:'user',content:txt}]; }
-    puterAI([{role:'system',content:sys}].concat(recent), 'gpt-4o-mini', 12000).then(function(aiTxt){
+    puterAI([{role:'system',content:sys}].concat(recent), 'gpt-4o-mini', 7000).then(function(aiTxt){
       try{ typing.remove(); }catch(e){}
       var reply = (aiTxt && String(aiTxt).trim()) ? String(aiTxt).trim() : buildTailored(txt);
       var el=addChatMsg('bot', fmtSentences(reply)); if(!aiTxt) el.classList.add('offline');
