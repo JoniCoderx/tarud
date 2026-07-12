@@ -10,13 +10,13 @@
 <title>Tarud — Heartbreak Check</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Space+Grotesk:wght@400;500;600;700&family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Space+Grotesk:wght@400;500;600;700&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{ --bg:#0b0a10; --panel:#14121b; --line:#2a2533; --ink:#f2ede6; --muted:#9a92a6; --gold:#6ea8fe; --gold-deep:#3d7bf0; --steel:#b4c4d6; --heart:#ff6b81; }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{min-height:100%}
   body{background:radial-gradient(120% 80% at 50% -10%, #2a1a2e 0%, transparent 55%),radial-gradient(100% 70% at 80% 110%, #241a12 0%, transparent 50%),var(--bg);color:var(--ink);font-family:"Space Grotesk",system-ui,sans-serif;display:flex;align-items:flex-start;justify-content:center;padding:calc(22px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) calc(70px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));-webkit-tap-highlight-color:transparent;position:relative;overflow-x:hidden}
-  body[dir="rtl"]{font-family:"Heebo","Space Grotesk",sans-serif}
+  body[dir="rtl"]{font-family:"Rubik","Space Grotesk",sans-serif}
   #fxCanvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
   .app{width:100%;max-width:480px;position:relative;z-index:1}
 
@@ -25,16 +25,16 @@
   .avatar{width:60px;height:60px;border-radius:50%;object-fit:cover;animation:glow 3.4s ease-in-out infinite}
   @keyframes glow{0%,100%{box-shadow:0 6px 20px -6px rgba(0,0,0,.7)}50%{box-shadow:0 6px 28px -3px rgba(110,168,254,.55)}}
   .brand .name{font-family:"Fraunces",serif;font-size:clamp(34px,8.4vw,46px);font-weight:600;line-height:1;white-space:nowrap}
-  body[dir="rtl"] .brand .name{font-family:"Heebo";font-weight:800}
+  body[dir="rtl"] .brand .name{font-family:"Rubik";font-weight:800}
   .brand .name span{font-family:"Space Grotesk";display:block;font-size:10px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;margin-top:6px}
-  body[dir="rtl"] .brand .name span{font-family:"Heebo";letter-spacing:.03em;text-transform:none}
+  body[dir="rtl"] .brand .name span{font-family:"Rubik";letter-spacing:.03em;text-transform:none}
   .lang{display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;font-size:12.5px;font-weight:600;flex-shrink:0}
   .lang button{background:transparent;color:var(--muted);border:none;padding:8px 14px;cursor:pointer;font-family:"Space Grotesk",sans-serif;white-space:nowrap}
-  .lang button:last-child{font-family:"Heebo",sans-serif}
+  .lang button:last-child{font-family:"Rubik",sans-serif}
   .lang button.on{background:var(--gold-deep);color:#fff}
 
   .lede{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(20px,5vw,26px);line-height:1.3;margin:20px 2px 4px}
-  body[dir="rtl"] .lede{font-family:"Heebo";font-style:normal;font-weight:700}
+  body[dir="rtl"] .lede{font-family:"Rubik";font-style:normal;font-weight:700}
   .sub{color:var(--muted);font-size:13.5px;line-height:1.55;margin:0 2px 18px}
 
   .card{background:linear-gradient(180deg,var(--panel),#100e16);border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:16px}
@@ -60,7 +60,7 @@
   .pop{animation:pop .4s cubic-bezier(.2,1.5,.4,1)}
   @keyframes pop{0%{transform:scale(.4)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
   .score-label{text-align:center;color:var(--ink);font-size:14px;min-height:20px;margin:8px 0 16px;font-style:italic;font-family:"Fraunces",serif}
-  body[dir="rtl"] .score-label{font-family:"Heebo";font-style:normal}
+  body[dir="rtl"] .score-label{font-family:"Rubik";font-style:normal}
   input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:99px;direction:ltr;background:linear-gradient(90deg,var(--gold) 0%,var(--gold) var(--pct,50%),#241f2c var(--pct,50%),#241f2c 100%);outline:none}
   input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#eaf2ff,var(--gold-deep));cursor:pointer;border:3px solid #0b0a10;box-shadow:0 3px 10px rgba(0,0,0,.5)}
   input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--gold);cursor:pointer;border:3px solid #0b0a10}
@@ -76,7 +76,7 @@
   textarea::placeholder{color:#6b6376}
 
   .btn{width:100%;font-family:"Space Grotesk";font-weight:700;font-size:16px;color:#fff;background:linear-gradient(180deg,var(--gold),var(--gold-deep));border:none;border-radius:999px;padding:15px;cursor:pointer;transition:transform .1s,filter .15s;box-shadow:0 12px 30px -12px rgba(61,123,240,.7)}
-  body[dir="rtl"] .btn{font-family:"Heebo"}
+  body[dir="rtl"] .btn{font-family:"Rubik"}
   .btn:hover{filter:brightness(1.05)}.btn:active{transform:scale(.98)}
   .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--muted);box-shadow:none;font-weight:600;font-size:14px;padding:12px}
   .btn.ghost:hover{color:var(--ink)}
@@ -92,11 +92,11 @@
   .pulse{width:84px;height:84px;border-radius:50%;object-fit:cover;animation:beat 1.1s ease-in-out infinite}
   @keyframes beat{0%,100%{transform:scale(1)}30%{transform:scale(1.08)}45%{transform:scale(1)}}
   .loading p{color:var(--muted);font-style:italic;font-family:"Fraunces",serif;font-size:15px}
-  body[dir="rtl"] .loading p{font-family:"Heebo";font-style:normal}
+  body[dir="rtl"] .loading p{font-family:"Rubik";font-style:normal}
 
   .result-emoji{font-size:48px;line-height:1;text-align:center;margin-bottom:6px}
   .result .verdict{font-family:"Fraunces",serif;font-size:clamp(26px,6.4vw,32px);font-weight:600;color:var(--gold);line-height:1.2;text-align:center;margin-bottom:4px}
-  body[dir="rtl"] .result .verdict{font-family:"Heebo"}
+  body[dir="rtl"] .result .verdict{font-family:"Rubik"}
   .result .from{text-align:center;color:var(--muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:0}
   .fromrow{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:18px}
   .from-av{width:26px;height:26px;border-radius:50%;object-fit:cover;flex-shrink:0}
@@ -107,7 +107,7 @@
   body[dir="rtl"] .block .k{letter-spacing:.02em;text-transform:none}
   .block .v{font-size:16px;line-height:1.72;color:var(--ink)}
   .closer{font-family:"Fraunces",serif;font-style:italic;font-size:18px;color:var(--gold);text-align:center;margin-top:18px;line-height:1.45}
-  body[dir="rtl"] .closer{font-family:"Heebo";font-style:normal}
+  body[dir="rtl"] .closer{font-family:"Rubik";font-style:normal}
 
   @keyframes riseIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
   .result.anim .result-emoji,.result.anim .verdict,.result.anim .from,.result.anim .msg,.result.anim .block,.result.anim .closer,.result.anim .scorepill{animation:riseIn .5s ease both}
@@ -118,7 +118,7 @@
   .stamp.reveal{animation:stampIn .6s cubic-bezier(.2,1.3,.4,1) both}
   @keyframes stampIn{0%{opacity:0;transform:rotate(-24deg) scale(2.2)}60%{opacity:1;transform:rotate(-3deg) scale(.9)}100%{transform:rotate(-6deg) scale(1)}}
   .stamp .word{font-family:"Fraunces",serif;font-weight:600;font-size:30px;letter-spacing:.04em;color:var(--gold);line-height:1;text-align:center}
-  body[dir="rtl"] .stamp .word{font-family:"Heebo";font-weight:800}
+  body[dir="rtl"] .stamp .word{font-family:"Rubik";font-weight:800}
   .stamp .gloss{font-size:13px;letter-spacing:.04em;text-transform:none;color:var(--gold-deep);text-align:center;margin-top:5px;font-weight:600}
   body[dir="rtl"] .stamp .gloss{letter-spacing:.03em;text-transform:none}
   .stamp.lvl-meforak{border-color:#d8a24a}
@@ -132,7 +132,7 @@
   .meme{text-align:center}
   .meme-face{width:120px;height:120px;border-radius:50%;object-fit:cover;margin:4px auto 16px;display:block;box-shadow:0 8px 24px -8px rgba(0,0,0,.7)}
   .meme-cap{font-family:"Anton",sans-serif;font-size:clamp(20px,5.4vw,26px);line-height:1.25;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.6);letter-spacing:.01em}
-  body[dir="rtl"] .meme-cap{font-family:"Heebo";font-weight:800}
+  body[dir="rtl"] .meme-cap{font-family:"Rubik";font-weight:800}
   .meme-by{color:var(--muted);font-size:12px;margin-top:14px;letter-spacing:.06em}
 
   .err{color:#ff9a9a;font-size:13.5px;line-height:1.5;text-align:center}
@@ -252,7 +252,7 @@
   .brand{gap:11px}
   @media (max-width:360px){ .logo{width:40px;height:40px} .brand{gap:8px} }
   #brandName{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(30px,8vw,42px);display:block;line-height:1;letter-spacing:.02em;text-transform:uppercase;margin:0;background:linear-gradient(120deg,#a9caff,#6ea8fe 45%,#3d7bf0);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 2px 8px rgba(61,123,240,.28))}
-  body[dir="rtl"] #brandName{font-family:"Heebo",sans-serif;font-weight:800;text-transform:none;letter-spacing:0}
+  body[dir="rtl"] #brandName{font-family:"Rubik",sans-serif;font-weight:800;text-transform:none;letter-spacing:0}
   body.light #brandName{filter:drop-shadow(0 1px 3px rgba(47,111,224,.3))}
 
   /* message: one sentence per line */
@@ -295,10 +295,11 @@
   .modal{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(6,5,10,.7);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
   .modalcard{width:100%;max-width:400px;background:linear-gradient(180deg,#1b1626,#12101a);border:1px solid var(--line);border-radius:22px;padding:24px 22px 20px;position:relative;box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
   body.light .modalcard{background:#fff;border-color:rgba(0,0,0,.08)}
-  .modalx{position:absolute;top:14px;inset-inline-end:16px;color:var(--muted);font-size:15px;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+  .modalx{position:absolute;top:14px;inset-inline-end:16px;color:var(--muted);font-size:15px;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:none;border:none;font-family:inherit;line-height:1}
+  .modalx:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(110,168,254,.5)}
   .modalx:hover{color:var(--ink)}
   .modaltitle{font-family:"Fraunces",serif;font-size:22px;font-weight:600;margin-bottom:8px;color:var(--ink)}
-  body[dir="rtl"] .modaltitle{font-family:"Heebo";font-weight:800}
+  body[dir="rtl"] .modaltitle{font-family:"Rubik";font-weight:800}
   .modaltext{color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:14px}
   #helpMsg{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;color:var(--ink);padding:11px 13px;font-family:inherit;font-size:14px;margin-bottom:12px;resize:vertical}
   #helpMsg:focus{outline:none;border-color:var(--gold-deep)}
@@ -378,7 +379,7 @@
 
   /* cover (Shimon) button: full-width, rounded like others, red, live dot, works in light */
   .utilrow{display:flex;gap:8px;justify-content:center;margin-bottom:10px}
-  .supportbtn{width:100%;height:auto;min-height:50px;display:flex;align-items:center;justify-content:center;gap:9px;border:none;border-radius:var(--btnr);background:linear-gradient(180deg,#ff5f70,#e23a4e);color:#fff;font-family:"Heebo","Space Grotesk",sans-serif;font-weight:700;font-size:14.5px;padding:13px 16px;cursor:pointer;box-shadow:0 12px 26px -14px rgba(226,58,78,.85);transition:filter .15s,transform .1s;margin-bottom:10px}
+  .supportbtn{width:100%;height:auto;min-height:50px;display:flex;align-items:center;justify-content:center;gap:9px;border:none;border-radius:var(--btnr);background:linear-gradient(180deg,#ff5f70,#e23a4e);color:#fff;font-family:"Rubik","Space Grotesk",sans-serif;font-weight:700;font-size:14.5px;padding:13px 16px;cursor:pointer;box-shadow:0 12px 26px -14px rgba(226,58,78,.85);transition:filter .15s,transform .1s;margin-bottom:10px}
   .supportbtn:hover{filter:brightness(1.06)}
   .supportbtn:active{transform:translateY(1px) scale(.99)}
   .supportbtn::before{content:"";width:10px;height:10px;border-radius:50%;background:#fff;flex-shrink:0;animation:livepulse 1.4s infinite}
@@ -402,7 +403,7 @@
   .chatlog{margin-bottom:4px}
 
   /* Shimon — prominent red call-to-action, both themes */
-  .shimonbtn{width:100%;min-height:52px;display:flex;align-items:center;justify-content:center;gap:10px;border:none;border-radius:var(--btnr);background:linear-gradient(180deg,#ff5f70,#e23a4e);color:#fff;font-family:"Heebo","Space Grotesk",sans-serif;font-weight:800;font-size:15px;padding:13px 16px;cursor:pointer;box-shadow:0 12px 26px -12px rgba(226,58,78,.9);transition:filter .15s,transform .1s;margin-bottom:12px}
+  .shimonbtn{width:100%;min-height:52px;display:flex;align-items:center;justify-content:center;gap:10px;border:none;border-radius:var(--btnr);background:linear-gradient(180deg,#ff5f70,#e23a4e);color:#fff;font-family:"Rubik","Space Grotesk",sans-serif;font-weight:800;font-size:15px;padding:13px 16px;cursor:pointer;box-shadow:0 12px 26px -12px rgba(226,58,78,.9);transition:filter .15s,transform .1s;margin-bottom:12px}
   .shimonbtn::before{content:"";width:10px;height:10px;border-radius:50%;background:#fff;flex-shrink:0;animation:livepulse 1.4s infinite}
   .shimonbtn:hover{filter:brightness(1.06)}
   .shimonbtn:active{transform:translateY(1px) scale(.99)}
@@ -463,7 +464,7 @@
         <div class="q" id="q1title"></div>
         <div class="score-head"><div class="score-num" id="scoreNum">5<em>/10</em></div><div class="mood-emoji" id="moodEmoji">😞</div></div>
         <div class="score-label" id="scoreLabel"></div>
-        <input type="range" id="score" min="1" max="10" value="5">
+        <input type="range" id="score" min="1" max="10" value="5" aria-label="דרג כמה טרוד אתה מ-1 עד 10" aria-valuemin="1" aria-valuemax="10" aria-valuenow="5">
         <div class="ticks"><span id="tickA"></span><span id="tickB"></span><span id="tickC"></span></div>
       </div>
 
@@ -536,9 +537,9 @@
     </div>
   </div>
 
-  <div id="helpModal" class="modal hidden">
+  <div id="helpModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
     <div class="modalcard">
-      <div class="modalx" id="helpClose" aria-label="close">✕</div>
+      <button type="button" class="modalx" id="helpClose" aria-label="סגור">✕</button>
       <div class="modaltitle" id="helpTitle"></div>
       <div class="modaltext" id="helpText"></div>
       <textarea id="helpMsg" rows="2"></textarea>
@@ -551,9 +552,9 @@
     </div>
   </div>
 
-  <div id="donateModal" class="modal hidden">
+  <div id="donateModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="donateTitle">
     <div class="modalcard">
-      <div class="modalx" id="donateClose" aria-label="close">✕</div>
+      <button type="button" class="modalx" id="donateClose" aria-label="סגור">✕</button>
       <div class="modaltitle" id="donateTitle"></div>
       <div class="modaltext" id="donateText"></div>
       <button class="btn bit" id="donateBit" style="margin-bottom:10px"></button>
@@ -562,7 +563,7 @@
     </div>
   </div>
 
-  <div class="toast" id="toast"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 /* ===== INLINE OFFLINE REASONING ENGINE (auto-inserted) ===== */
@@ -1240,7 +1241,7 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
     },
     he:{
       brandName:"טרוד", brandSub:"בדיקת שברון לב",
-      lede:"נתת למישהי את הכול. בוא נראה כמה זה עולה לך.",
+      lede:"נתת למישהי את הכל. בוא נראה כמה זה עולה לך.",
       sub:"נבנה במיוחד בשביל גברים עם לב שבור. תבחר עם מי לדבר, תן ציון, תוציא את זה — ותקבל תשובה ששוברת.",
       qChar:"עם מי בא לך לדבר?",
       q1:"כמה טרוד אתה היום?", q1s:"1 = אתה בגדול בסדר · 10 = טרוד לגמרי",
@@ -1316,12 +1317,12 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
       fallbacks:[
         {emoji:"🌧️",level:6,verdict:"מותר לך לכאוב",message:"להתגעגע אליה לא הופך אותך לחלש — זה אומר שזה היה אמיתי. הלילה אתה לא חייב להיות בסדר, רק לעבור אותו.",tip:"טלפון עם המסך למטה, כוס מים, לשכב. שום דבר לא צריך פתרון הלילה.",closer:"מחר זה יום יותר רך."},
         {emoji:"💔",level:7,verdict:"כאב כי היה אכפת",message:"גודל הכאב הוא בדיוק גודל האכפתיות שלך. זה הדבר הכי אנושי שיש בך.",tip:"תכתוב לחבר 'לילה קשה' — לא לה. תן למישהו לשבת איתך בזה.",closer:"לא תרגיש כבד ככה לנצח."},
-        {emoji:"🌙",level:5,verdict:"רק תעבור את הלילה",message:"בלילה הכול נשמע חזק יותר. המחשבות בשעה הזאת הן לא האמת — זה החושך מדבר.",tip:"תשים משהו שאהבת עוד לפני שהכרת אותה, עד שתירדם.",closer:"הבוקר מוריד את העוצמה."},
+        {emoji:"🌙",level:5,verdict:"רק תעבור את הלילה",message:"בלילה הכל נשמע חזק יותר. המחשבות בשעה הזאת הן לא האמת — זה החושך מדבר.",tip:"תשים משהו שאהבת עוד לפני שהכרת אותה, עד שתירדם.",closer:"הבוקר מוריד את העוצמה."},
         {emoji:"💪",level:6,verdict:"עדיין עומד",message:"קמת היום, אתה נושם, ופנית לדבר במקום לשתוק. זה כוח.",tip:"דבר קטן בשביל אתה-של-מחר: מקלחת, מים, סדין נקי.",closer:"לילה אחרי לילה."},
         {emoji:"🕯️",level:7,verdict:"געגוע זה אהבה",message:"מה שאתה נושא זה אבל, ואבל מופיע רק איפה שהייתה אהבה. תן לזה לזרום במקום להילחם.",tip:"תכתוב מה חסר לך, ואז תסגור את הפתקים. אל תשלח לה מילה.",closer:"זה משתחרר. לאט, ואז בבת אחת."},
         {emoji:"🌅",level:5,verdict:"זה לא הסוף שלך",message:"מרגיש שהסיפור נגמר. הוא לא — זה פרק אחד קשה, ואתה מחזיק את העט.",tip:"שתי דקות אוויר בחוץ, אפילו רק בפתח. העולם גדול מהחדר הזה.",closer:"יהיה בסדר."},
         {emoji:"🫂",level:8,verdict:"אתה לא לבד בזה",message:"זה הרבה בשביל גבר אחד בלילה אחד. לא נבנית לשאת שברון לב לבד.",tip:"תתקשר למישהו שאוהב אותך ותגיד את זה בקול. אם מאוחר, שיתקשר מחר.",closer:"אתה שווה יותר ממה שהלילה מרגיש."},
-        {emoji:"⚓",level:6,verdict:"תישאר יציב",message:"הדחף לתקן הכול עכשיו — לכתוב לה, לקבל תשובה — זה הכאב, לא תוכנית.",tip:"תמחק את הטיוטה. אל תשלח כלום בשעה כזאת; מחר תודה לעצמך.",closer:"בשקט. הגל עובר."},
+        {emoji:"⚓",level:6,verdict:"תישאר יציב",message:"הדחף לתקן הכל עכשיו — לכתוב לה, לקבל תשובה — זה הכאב, לא תוכנית.",tip:"תמחק את הטיוטה. אל תשלח כלום בשעה כזאת; מחר תודה לעצמך.",closer:"בשקט. הגל עובר."},
         {emoji:"🌊",level:7,verdict:"תן לגל לעבור",message:"שברון לב בא בגלים. הגל הזה מרגיש שימשוך אותך למטה, אבל גלים תמיד נסוגים.",tip:"נשימה פנימה ארבע, החוצה שש, עשר פעמים.",closer:"אתה תמיד חוזר לצוף."},
         {emoji:"❤️‍🩹",level:8,verdict:"אתה תחלים, באמת",message:"אני יודע שהלילה זה לא מרגיש שאפשר לשרוד. אבל לב מתאחה גם כשבטוחים שלא.",tip:"תהיה עדין עם עצמך כמו שהיית עם חבר במצבך.",closer:"זה מתרפא. תן לזה זמן."},
         {emoji:"🌱",level:4,verdict:"רגיש, לא שבור",message:"אתה כואב, לא מרוסק. משהו שכואב ככה בבירור היה שווה משהו.",tip:"דבר טוב אחד לעצמך: מקלחת חמה, תה, שיר טוב.",closer:"אתה תפרח שוב."},
@@ -1332,8 +1333,8 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
         {emoji:"🌤️",level:4,verdict:"קליל ממה שהיה",message:"אתה נשמע יציב יותר ממישהו שרק נכנס לזה. זו החלמה שמתחילה להופיע.",tip:"תעשה דבר אחד שהוא רק שלך הלילה, בלי קשר אליה.",closer:"אתה יותר מתקדם ממה שאתה חושב."},
         {emoji:"🪨",level:8,verdict:"כבד, אבל אתה חזק",message:"זה לילה של סלע על החזה. אבל כבד זה לא כמו להישבר, ואתה עדיין פה.",tip:"תוריד את הרף להישרדות: מים, מיטה, נשימה. זה ניצחון מלא הלילה.",closer:"אתה נושא יותר ממה שאתה יודע."},
         {emoji:"📵",level:6,verdict:"תניח את הטלפון",message:"כל רענון של הפרופיל שלה זה חתך קטן שאתה נותן לעצמך. האצבע שלך לא חברה שלך עכשיו.",tip:"תעביר את הטלפון לחדר אחר ותטעין שם. רחוק מהיד, רחוק מהלופ.",closer:"מרחק הלילה, בהירות מחר."},
-        {emoji:"🌬️",level:5,verdict:"תן לזה לעבור דרכך",message:"אתה לא חייב להחזיק הכול בחזה. תן לעצב לעבור דרכך כמו מזג אוויר.",tip:"עשר נשימות איטיות עם נשיפה ארוכה. תוריד כתפיים בכל אחת.",closer:"מזג אוויר תמיד עובר."},
-        {emoji:"🧱",level:7,verdict:"לבנה אחת בכל פעם",message:"אתה לא יכול לבנות הכול הלילה, ואף אחד לא מבקש. רק לבנה קטנה אחת.",tip:"תבחר דבר קטן אחד לתקן מחר ותעצור שם. תנופה מנצחת מוטיבציה.",closer:"בונים לאט, ואז בבת אחת."},
+        {emoji:"🌬️",level:5,verdict:"תן לזה לעבור דרכך",message:"אתה לא חייב להחזיק הכל בחזה. תן לעצב לעבור דרכך כמו מזג אוויר.",tip:"עשר נשימות איטיות עם נשיפה ארוכה. תוריד כתפיים בכל אחת.",closer:"מזג אוויר תמיד עובר."},
+        {emoji:"🧱",level:7,verdict:"לבנה אחת בכל פעם",message:"אתה לא יכול לבנות הכל הלילה, ואף אחד לא מבקש. רק לבנה קטנה אחת.",tip:"תבחר דבר קטן אחד לתקן מחר ותעצור שם. תנופה מנצחת מוטיבציה.",closer:"בונים לאט, ואז בבת אחת."},
         {emoji:"🌟",level:3,verdict:"אתה קרוב לבסדר",message:"אתה נשמע כמו מישהו שמוצא את הרגליים מחדש. רוב האנשים לא מטפסים ככה מהר.",tip:"תחגוג בשקט: אוכל אהוב, שינה מוקדמת, אפס דום־סקרולינג.",closer:"תמשיך, אתה עושה את זה."},
         {emoji:"🩹",level:6,verdict:"תטפל בפצע",message:"לא היית מוריד פלסטר כל שעה כדי לבדוק — אז תפסיק לפתוח את זה מחדש בבדיקות עליה.",tip:"בכל פעם שאתה מושיט יד לשם שלה, תשתה מים במקום.",closer:"פצעים מתרפאים כשעוזבים אותם."},
         {emoji:"🌒",level:7,verdict:"הכי חשוך לפני שמאיר",message:"השעה הזאת מרגישה אינסופית, אני יודע. אבל החלק הכי עמוק של הלילה תמיד לפני שהשמיים מתהפכים.",tip:"אל תקבל שום החלטה הלילה. רק תשכב ותן לשעון לעבוד.",closer:"השמיים תמיד מתהפכים."},
@@ -1342,7 +1343,7 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
         {emoji:"🚪",level:6,verdict:"דלתות נסגרות בשבילך",message:"דלת שנסגרת כואבת, אבל זה לא תמיד עונש — לפעמים זו הגנה שאתה עדיין לא רואה.",tip:"תכתוב שורה אחת: 'מה אני באמת רוצה במישהי'. רק לעיניים שלך.",closer:"דלתות טובות יותר לפניך."},
         {emoji:"🌾",level:4,verdict:"עדין עם עצמך",message:"אתה נושא את זה יותר טוב ממה שאתה נותן לעצמך קרדיט. תרד קצת מהבחור במראה.",tip:"תגיד לעצמך דבר אחד טוב בקול, גם אם זה מרגיש טיפשי. במיוחד אז.",closer:"מגיע לך הסבלנות של עצמך."},
         {emoji:"🕰️",level:7,verdict:"הזמן לצידך",message:"שום דבר בלילה הזה הוא לא לתמיד, גם אם הוא נשבע שכן. הזמן עובד בשבילך בשקט.",tip:"תן לעצמך לילה משעמם ובריא, ותן לימים לעשות את השאר.",closer:"כל יום מרפה את האחיזה."},
-        {emoji:"🔥",level:8,verdict:"זה לא ישרוף אותך",message:"מרגיש שהכול בוער, אבל אתה הדבר היחיד פה שלא נשרף. אתה עומד בזה.",tip:"מים קרים על הפנים, כמה נשימות עמוקות, ואז לנוח.",closer:"אתה עובר דרך האש, לא נשאר בה."},
+        {emoji:"🔥",level:8,verdict:"זה לא ישרוף אותך",message:"מרגיש שהכל בוער, אבל אתה הדבר היחיד פה שלא נשרף. אתה עומד בזה.",tip:"מים קרים על הפנים, כמה נשימות עמוקות, ואז לנוח.",closer:"אתה עובר דרך האש, לא נשאר בה."},
         {emoji:"🌈",level:3,verdict:"הגרוע מאחוריך",message:"אתה נשמע כמו מישהו שהסערה כבר ברובה מאחוריו. מה שנשאר זה שמיים מתבהרים וקצת רכות.",tip:"תעשה משהו כיפי נטו הלילה — בלי צמיחה, בלי עיבוד, רק שמחה.",closer:"מכאן יותר מואר."},
         {emoji:"🌵",level:6,verdict:"אתה תצמח מזה",message:"שום דבר ירוק לא צומח בלי קצת יובש קודם. המקום היבש והכואב הזה הוא איפה שהשורשים יורדים עמוק.",tip:"תעשה מטלה מקרקעת — כלים, כביסה, מיטה מסודרת. סדר בחוץ מרגיע בפנים.",closer:"שורשים עמוקים, אתה חזק יותר."},
         {emoji:"🧊",level:5,verdict:"גם קהות זה בסדר",message:"אתה לא חייב לבכות או לכעוס כדי לעשות את זה נכון. לפעמים החלמה זה פשוט לשבת בשקט עם זה.",tip:"תתכרבל, תכין משקה חם, ותרשה לעצמך לא לעשות כלום שעה.",closer:"מנוחה זה חלק מהעבודה."},
@@ -1350,7 +1351,7 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
         {emoji:"🥊",level:7,verdict:"כוון את הכעס נכון",message:"אם אתה כועס — יופי, זה הכבוד העצמי שלך מתעורר. רק אל תכוון אותו לעצמך או לטלפון שלה.",tip:"תשרוף את זה נקי: שכיבות שמיכה, הליכה חזקה, מוזיקה חזק. תוציא את האש מהחזה.",closer:"תהפוך את החום לדלק."},
         {emoji:"🌻",level:4,verdict:"מסתובב לכיוון האור",message:"אתה נשמע כמו מישהו שכבר נוטה חזרה לעצמו. תמשיך לפנות לאור — זה כל הטריק.",tip:"תתכנן דבר אחד לצפות לו השבוע, אפילו קטן.",closer:"אתה בדרך למעלה."},
         {emoji:"📖",level:6,verdict:"זה לא הפרק האחרון",message:"אתה מתאבל על איך שהסיפור נגמר, אבל זה אף פעם לא היה כל הספר. נשארו לך המון עמודים.",tip:"לפני השינה, תקרא או תראה משהו בלי קשר אליה.",closer:"תהפוך את הדף מחר."},
-        {emoji:"🛌",level:5,verdict:"שינה זו תרופה",message:"חצי מהכובד הזה זה פשוט עייפות. הכול ייראה קטן יותר אחרי שתנוח באמת.",tip:"בלי מסכים ב-20 הדקות האחרונות. תשכב גם אם השינה מתמהמהת.",closer:"מוח של בוקר יותר רחום."},
+        {emoji:"🛌",level:5,verdict:"שינה זו תרופה",message:"חצי מהכובד הזה זה פשוט עייפות. הכל ייראה קטן יותר אחרי שתנוח באמת.",tip:"בלי מסכים ב-20 הדקות האחרונות. תשכב גם אם השינה מתמהמהת.",closer:"מוח של בוקר יותר רחום."},
         {emoji:"🧗",level:8,verdict:"אתה באמצע הטיפוס",message:"זה החלק הקשה של הקיר, איפה שהידיים רועדות ואתה לא רואה את הפסגה. תנשום ותחזיק.",tip:"רק תגיע לאחיזה הבאה: מים, שיניים, מיטה. אל תסתכל על כל הטיפוס הלילה.",closer:"הפסגה קרובה ממה שזה מרגיש."},
         {emoji:"🕊️",level:6,verdict:"תן לזה להישאר פתוח",message:"אולי לא תקבל את הסגירה שאתה רוצה, וההמתנה לה תוקעת אותך. שקט זה משהו שאתה יכול לתת לעצמך.",tip:"תכתוב את הסגירה שהיא לא תיתן לך — פסקה אחת — ותשמור. בשבילך, לא בשבילה.",closer:"אתה יכול לסגור את הדלת הזאת בעצמך."},
         {emoji:"⛲",level:5,verdict:"תמלא את הכוס שלך",message:"שפכת ככה הרבה לתוכה שאתה רץ על ריק. הלילה זה בשביל להחזיר קצת לעצמך.",tip:"תעשה דבר אחד שהוא נטו לנוחות שלך, בלי אשמה.",closer:"אתה חשוב גם לעצמך."},
@@ -1377,6 +1378,8 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
     document.body.setAttribute('dir', lang==='he'?'rtl':'ltr');
     document.documentElement.lang=lang;
     $('langEn').classList.toggle('on',lang==='en'); $('langHe').classList.toggle('on',lang==='he');
+    $('langEn').setAttribute('aria-pressed',lang==='en'?'true':'false'); $('langHe').setAttribute('aria-pressed',lang==='he'?'true':'false');
+    var tb=$('themeBtn'); if(tb) tb.setAttribute('aria-label', lang==='he'?'החלף בין מצב כהה לבהיר':'Toggle light or dark mode');
     $('brandName').textContent=t.brandName; $('brandSub').textContent=t.brandSub;
     $('lede').textContent=t.lede; $('sub').textContent=t.sub; $('qChar').textContent=t.qChar;
     $('q1title').innerHTML=t.q1+'<small>'+t.q1s+'</small>';
@@ -1385,7 +1388,7 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
     $('q4title').textContent=t.q4; feeling.placeholder=t.q4ph;
     $('askBtn').textContent=t.ask; $('loadingText').textContent=t.asking;
     $('foot1').textContent=t.foot1; $('foot2').textContent=t.foot2;
-    $('copyBtn').textContent=t.card; $('memeBtn').textContent=t.meme; $('againBtn').textContent=t.again; $('cardCopy').textContent=t.cardCopy; $('cardDownload').textContent=t.cardDownload; $('cardBack').textContent=t.cardBack; $('cardHint').textContent=t.cardHint; $('memeCopy').textContent=t.memeCopy; $('cardWa').textContent=t.whatsapp; $('cardIg').textContent=t.instagram; $('memeWa').textContent=t.whatsapp; $('memeIg').textContent=t.instagram; $('ttsBtn').textContent='🔊'; $('storyBtn').textContent=t.story; $('chatInput').placeholder=t.chatPh; $('breakBtn').textContent=t.breakLabel; $('breakBtn').setAttribute('aria-label',t.breakLabel); $('helpTitle').textContent=t.helpTitle; $('helpText').textContent=t.helpText; $('helpMsg').placeholder=t.helpMsgPh; $('helpWa').textContent=t.helpWa; $('helpEran').textContent=t.helpEran; $('helpFoot').textContent=t.helpFoot; $('addToggle').textContent=lang==='he'?'➕ להוסיף':'➕ Add'; if($('chatSend'))$('chatSend').textContent=lang==='he'?'שלח':'Send'; $('liveLabel').textContent=lang==='he'?'טרודים קיבלו מענה החודש':'guys got answers this month'; $('crisisH').textContent=lang==='he'?'המצב חמור? אתה לא לבד — ער\"ן כאן בשבילך, 24/7.':'In real distress? You are not alone — a crisis line is here 24/7.'; $('songBtn').setAttribute('aria-label',lang==='he'?'שיר עצוב':'sad song'); if($('donateTitle')){ var _dn=lang==='he'; $('donateBtn').textContent=_dn?'💛 לתרומה למייסדים':'💛 Support the founders'; $('donateBtn2').textContent=_dn?'💛 לתרומה למייסדים':'💛 Support the founders'; $('donateTitle').textContent=_dn?'תרומה למייסדים 💛':'Support the founders 💛'; $('donateText').textContent=_dn?'טרוד נבנה באהבה כדי לעזור לטרודים לעבור את זה. כל תרומה קטנה עוזרת לנו להמשיך להחזיק את זה חי. תודה שאתה חלק מזה.':'Tarud is built with love to help guys through heartbreak. Any small donation keeps it alive. Thank you for being part of it.'; $('donateBit').textContent=_dn?'💙 תרומה בביט':'💙 Donate via Bit'; $('donatePaybox').textContent=_dn?'💜 תרומה ב-PayBox':'💜 Donate via PayBox'; $('donateFoot').textContent=_dn?'הכול הולך לתחזוקת האתר והשירות.':'It all goes to keeping the service alive.'; }
+    $('copyBtn').textContent=t.card; $('memeBtn').textContent=t.meme; $('againBtn').textContent=t.again; $('cardCopy').textContent=t.cardCopy; $('cardDownload').textContent=t.cardDownload; $('cardBack').textContent=t.cardBack; $('cardHint').textContent=t.cardHint; $('memeCopy').textContent=t.memeCopy; $('cardWa').textContent=t.whatsapp; $('cardIg').textContent=t.instagram; $('memeWa').textContent=t.whatsapp; $('memeIg').textContent=t.instagram; $('ttsBtn').textContent='🔊'; $('storyBtn').textContent=t.story; $('chatInput').placeholder=t.chatPh; $('breakBtn').textContent=t.breakLabel; $('breakBtn').setAttribute('aria-label',t.breakLabel); $('helpTitle').textContent=t.helpTitle; $('helpText').textContent=t.helpText; $('helpMsg').placeholder=t.helpMsgPh; $('helpWa').textContent=t.helpWa; $('helpEran').textContent=t.helpEran; $('helpFoot').textContent=t.helpFoot; $('addToggle').textContent=lang==='he'?'➕ להוסיף':'➕ Add'; if($('chatSend'))$('chatSend').textContent=lang==='he'?'שלח':'Send'; $('liveLabel').textContent=lang==='he'?'טרודים קיבלו מענה החודש':'guys got answers this month'; $('crisisH').textContent=lang==='he'?'המצב חמור? אתה לא לבד — ער\"ן כאן בשבילך, 24/7.':'In real distress? You are not alone — a crisis line is here 24/7.'; $('songBtn').setAttribute('aria-label',lang==='he'?'שיר עצוב':'sad song'); if($('donateTitle')){ var _dn=lang==='he'; $('donateBtn').textContent=_dn?'💛 לתרומה למייסדים':'💛 Support the founders'; $('donateBtn2').textContent=_dn?'💛 לתרומה למייסדים':'💛 Support the founders'; $('donateTitle').textContent=_dn?'תרומה למייסדים 💛':'Support the founders 💛'; $('donateText').textContent=_dn?'טרוד נבנה באהבה כדי לעזור לטרודים לעבור את זה. כל תרומה קטנה עוזרת לנו להמשיך להחזיק את זה חי. תודה שאתה חלק מזה.':'Tarud is built with love to help guys through heartbreak. Any small donation keeps it alive. Thank you for being part of it.'; $('donateBit').textContent=_dn?'💙 תרומה בביט':'💙 Donate via Bit'; $('donatePaybox').textContent=_dn?'💜 תרומה ב-PayBox':'💜 Donate via PayBox'; $('donateFoot').textContent=_dn?'הכל הולך לתחזוקת האתר והשירות.':'It all goes to keeping the service alive.'; }
     $('memeAnother').textContent=t.memeAnother; $('memeBack').textContent=t.memeBack;
     $('retryBtn').textContent=t.retry; $('toast').textContent=t.copied;
     renderChars(); renderChips(); paintScore();
@@ -1416,6 +1419,7 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
     score.style.setProperty('--pct', ((v-1)/9*100)+'%');
     $('scoreNum').innerHTML=v+'<em>/10</em>';
     $('scoreLabel').textContent=T[lang].labels[v];
+    score.setAttribute('aria-valuenow',v); score.setAttribute('aria-valuetext',v+'/10 — '+(T[lang].labels[v]||''));
     const me=$('moodEmoji'); if(me.textContent!==EMO[v]){ me.textContent=EMO[v]; me.classList.remove('pop'); void me.offsetWidth; me.classList.add('pop'); }
     const tt=(v-1)/9;
     $('scoreNum').style.color = accentFor(v).c;
@@ -1585,8 +1589,8 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
   function cardAccent(v,L){ if(!L) return accentFor(v).c; if(v<=4) return '#2f9e6e'; if(v<=7) return '#a9791f'; if(v<=9) return '#d33a54'; return '#c2172f'; }
   function makeCard(){
     const t=T[lang], ch=t.chars[lastChar], rtl=lang==='he', L=document.body.classList.contains('light'), P=cardPal();
-    const S=rtl?'"Heebo", sans-serif':'"Space Grotesk", sans-serif';
-    const F=rtl?'"Heebo", sans-serif':'"Fraunces", serif';
+    const S=rtl?'"Rubik", sans-serif':'"Space Grotesk", sans-serif';
+    const F=rtl?'"Rubik", sans-serif':'"Fraunces", serif';
     const c=document.createElement('canvas'); c.width=1080; c.height=1350; const g=c.getContext('2d');
     g.textAlign='center'; g.direction=rtl?'rtl':'ltr'; g.textBaseline='alphabetic';
     const bg=g.createLinearGradient(0,0,0,1350); bg.addColorStop(0,P.bg1); bg.addColorStop(1,P.bg2); g.fillStyle=bg; g.fillRect(0,0,1080,1350);
@@ -1630,7 +1634,7 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
   let lastCanvas=null, lastShareText="";
   function makeMemeCard(cap){
     const t=T[lang], ch=t.chars[lastChar], rtl=lang==='he', L=document.body.classList.contains('light'), P=cardPal();
-    const CAP=rtl?'"Heebo", sans-serif':'"Anton", sans-serif';
+    const CAP=rtl?'"Rubik", sans-serif':'"Anton", sans-serif';
     const c=document.createElement('canvas'); c.width=1080; c.height=1080; const g=c.getContext('2d');
     g.textAlign='center'; g.direction=rtl?'rtl':'ltr'; g.textBaseline='alphabetic';
     const bg=g.createLinearGradient(0,0,0,1080); bg.addColorStop(0,P.bg1); bg.addColorStop(1,P.bg2); g.fillStyle=bg; g.fillRect(0,0,1080,1080);
@@ -1641,8 +1645,8 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
     g.strokeStyle=lastChar==='meforak'?(L?'#7c93a8':'#b4c4d6'):P.brand; g.lineWidth=7; g.beginPath(); g.arc(ax,ay,ar+6,0,Math.PI*2); g.stroke();
     g.fillStyle=P.name; g.font=(rtl?'800 52px ':'52px ')+CAP;
     let y=560; y=wrapText(g,'“'+cap+'”',540,y,940,66);
-    g.fillStyle=P.sub; g.font='500 26px "'+(rtl?'Heebo':'Space Grotesk')+'", sans-serif'; g.fillText('— '+ch.name,540,y+36);
-    g.fillStyle=P.foot; g.font='600 24px "'+(rtl?'Heebo':'Space Grotesk')+'", sans-serif'; g.fillText('tarud.info',540,1032);
+    g.fillStyle=P.sub; g.font='500 26px "'+(rtl?'Rubik':'Space Grotesk')+'", sans-serif'; g.fillText('— '+ch.name,540,y+36);
+    g.fillStyle=P.foot; g.font='600 24px "'+(rtl?'Rubik':'Space Grotesk')+'", sans-serif'; g.fillText('tarud.info',540,1032);
     return c;
   }
   async function shareCard(){
@@ -1706,7 +1710,7 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
   function crisisResponse(){
     if(lang==='he') return {crisis:true,emoji:'🫂',level:5,verdict:'עצור רגע — אתה לא לבד',
       message:'זה כבר לא עניין של אקסית או פרידה — זה רגע שצריך בו עזרה אמיתית עכשיו. אל תהיה לבד עם זה. תתקשר עכשיו למישהו קרוב שאתה סומך עליו.',
-      tip:'אם אתה מרגיש שאתה עלול לפגוע בעצמך — פנה מיד למד"א 101 או לער"ן 1201. אתה לא צריך לפתור הכול עכשיו, רק לעבור את הרגע הזה בבטחה.',
+      tip:'אם אתה מרגיש שאתה עלול לפגוע בעצמך — פנה מיד למד"א 101 או לער"ן 1201. אתה לא צריך לפתור הכל עכשיו, רק לעבור את הרגע הזה בבטחה.',
       closer:'הרגע הזה יעבור. אתה לא לבד בו.'};
     return {crisis:true,emoji:'🫂',level:5,verdict:"Pause — you're not alone",
       message:"This isn't about the breakup anymore — it's a moment that needs real support right now. Please don't sit with it alone; reach out to someone you trust this minute.",
@@ -1772,55 +1776,51 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
   function setTheme(light){ document.body.classList.toggle('light',light); $('themeBtn').textContent=light?'☀️':'🌙'; const m=document.querySelector('meta[name=theme-color]'); if(m) m.setAttribute('content', light?'#f4efe7':'#0b0a10'); }
   $('themeBtn').onclick=()=>setTheme(!document.body.classList.contains('light'));
 
-  // ===== text-to-speech: free higher-quality Google TTS + speechSynthesis fallback =====
-  let voicePref='male', speaking=false, resumeTimer=null, ttsAudio=null;
-  if('speechSynthesis' in window){ try{ speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged=function(){}; }catch(e){} }
-  function ttsIcon(on){ if($('ttsBtn')) $('ttsBtn').textContent=on?'⏹':'🔊'; }
+  // ===== text-to-speech: 100% offline via the browser's built-in speech engine (free, no network) =====
+  let voicePref='male', speaking=false, resumeTimer=null, ttsQueue=[], ttsIdx=0;
+  function ttsSupported(){ return ('speechSynthesis' in window) && (typeof SpeechSynthesisUtterance!=='undefined'); }
+  if(ttsSupported()){ try{ speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged=function(){}; }catch(e){} }
+  function ttsIcon(on){ var b=$('ttsBtn'); if(!b) return; b.textContent=on?'⏹':'🔊'; b.setAttribute('aria-pressed',on?'true':'false'); b.setAttribute('aria-label', on?(lang==='he'?'עצור הקראה':'Stop reading'):(lang==='he'?'הקרא את התשובה':'Read the answer')); }
   function pickVoice(){ let vs=[]; try{ vs=speechSynthesis.getVoices(); }catch(e){} const want=lang==='he'?'he':'en'; let pool=vs.filter(v=>v.lang&&v.lang.toLowerCase().indexOf(want)===0); if(lang==='he'){ const pref=pool.find(v=>/carmit|hebrew|עברית/i.test(v.name)); if(pref) return pref; } if(!pool.length) pool=vs;
     const fem=/female|woman|girl|zira|tessa|samantha|karen|moira|serena|carmit|shira|hila/i, mal=/male|man|david|daniel|alex|fred|rishi|guy|asaf|tom/i;
     const key=voicePref==='female'?fem:mal; return pool.find(v=>key.test(v.name)) || pool[0] || null; }
-  function stopSpeak(){ try{ if(ttsAudio){ ttsAudio.onended=null; ttsAudio.onerror=null; ttsAudio.pause(); ttsAudio=null; } }catch(e){} try{ speechSynthesis.cancel(); }catch(e){} if(resumeTimer){clearInterval(resumeTimer);resumeTimer=null;} speaking=false; ttsIcon(false); }
-  function ttsChunks(text){ const out=[]; let s=String(text||'').replace(/\s+/g,' ').trim(); while(s.length){ let cut=Math.min(190,s.length); if(cut<s.length){ const sp=s.lastIndexOf(' ',cut); if(sp>60) cut=sp; } out.push(s.slice(0,cut).trim()); s=s.slice(cut).trim(); } return out.filter(Boolean); }
-  function gttsUrl(t){ return 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl='+(lang==='he'?'iw':'en')+'&q='+encodeURIComponent(t); }
-  function playGoogleTTS(text){ return new Promise(function(resolve,reject){
-      const chunks=ttsChunks(text); if(!chunks.length){ reject(new Error('empty')); return; }
-      let i=0, started=false; const a=new Audio(); ttsAudio=a; a.preload='auto';
-      a.onplaying=function(){ started=true; };
-      a.onended=function(){ i++; if(ttsAudio!==a) return; if(i<chunks.length){ a.src=gttsUrl(chunks[i]); a.play().catch(function(){ if(!started) reject(new Error('play')); else { ttsAudio=null; resolve(true); } }); } else { ttsAudio=null; resolve(true); } };
-      a.onerror=function(){ if(!started) reject(new Error('err')); else { ttsAudio=null; resolve(true); } };
-      a.src=gttsUrl(chunks[0]); a.play().catch(function(){ reject(new Error('play0')); });
-      setTimeout(function(){ if(!started){ reject(new Error('timeout')); } }, 2600);
-    }); }
-  function speakSynth(text){
-    try{ if(speechSynthesis.speaking||speechSynthesis.pending) speechSynthesis.cancel(); }catch(e){}
-    const u=new SpeechSynthesisUtterance(text); u.lang=lang==='he'?'he-IL':'en-US'; const v=pickVoice(); if(v)u.voice=v;
-    u.rate=lang==='he'?0.98:1.0; u.pitch=voicePref==='female'?1.25:0.85;
-    let started=false; u.onstart=function(){ started=true; };
-    u.onend=function(){ speaking=false; if(resumeTimer){clearInterval(resumeTimer);resumeTimer=null;} ttsIcon(false); };
-    u.onerror=function(){ speaking=false; if(resumeTimer){clearInterval(resumeTimer);resumeTimer=null;} ttsIcon(false); };
-    try{ if(speechSynthesis.paused) speechSynthesis.resume(); }catch(e){}
-    try{ speechSynthesis.speak(u); }catch(e){ speaking=false; ttsIcon(false); return; }
-    setTimeout(function(){ if(speaking && !speechSynthesis.speaking && !speechSynthesis.pending){ speaking=false; ttsIcon(false); } },700);
-    if(resumeTimer)clearInterval(resumeTimer);
-    resumeTimer=setInterval(function(){ try{ if(!speechSynthesis.speaking){clearInterval(resumeTimer);resumeTimer=null;} else speechSynthesis.resume(); }catch(e){} },7000);
-    setTimeout(function(){ if(speaking && !started){ try{ speechSynthesis.cancel(); }catch(e){} if(resumeTimer){clearInterval(resumeTimer);resumeTimer=null;} speaking=true; ttsIcon(true); playGoogleTTS(text).then(function(){ speaking=false; ttsIcon(false); }).catch(function(){ speaking=false; ttsIcon(false); showToast(lang==='he'?'ההשמעה חסומה כאן — פתח/י בדפדפן':'Audio blocked here — try opening in a browser'); }); } }, 1600);
+  function stopSpeak(){ if(resumeTimer){clearInterval(resumeTimer);resumeTimer=null;} ttsQueue=[]; ttsIdx=0; try{ speechSynthesis.cancel(); }catch(e){} speaking=false; ttsIcon(false); }
+  function ttsChunks(text){ const out=[]; let s=String(text||'').replace(/\s+/g,' ').trim(); while(s.length){ let cut=Math.min(180,s.length); if(cut<s.length){ const sp=s.lastIndexOf(' ',cut); if(sp>60) cut=sp; } out.push(s.slice(0,cut).trim()); s=s.slice(cut).trim(); } return out.filter(Boolean); }
+  function speakChunk(){
+    if(!speaking) return;
+    if(ttsIdx>=ttsQueue.length){ stopSpeak(); return; }
+    const u=new SpeechSynthesisUtterance(ttsQueue[ttsIdx]);
+    u.lang=lang==='he'?'he-IL':'en-US'; const v=pickVoice(); if(v)u.voice=v;
+    u.rate=lang==='he'?0.98:1.0; u.pitch=voicePref==='female'?1.2:0.85;
+    u.onend=function(){ ttsIdx++; if(speaking) speakChunk(); };
+    u.onerror=function(){ ttsIdx++; if(speaking) speakChunk(); };
+    try{ speechSynthesis.speak(u); }catch(e){ stopSpeak(); }
   }
+  // resolve voices without hanging if the event never fires
+  function withVoices(cb){ let vs=[]; try{ vs=speechSynthesis.getVoices(); }catch(e){} if(vs&&vs.length){ cb(vs); return; } let done=false; const fin=function(){ if(done)return; done=true; let out=[]; try{ out=speechSynthesis.getVoices(); }catch(e){} cb(out||[]); }; try{ speechSynthesis.onvoiceschanged=fin; }catch(e){} setTimeout(fin,600); }
   function speakText(text){
     if(!text) return;
     if(speaking){ stopSpeak(); return; }
-    speaking=true; ttsIcon(true);
-    if('speechSynthesis' in window){ speakSynth(text); }
-    else { speaking=false; ttsIcon(false); showToast(lang==='he'?'ההקראה לא נתמכת בדפדפן הזה':'Speech not supported here'); }
+    if(!ttsSupported()){ showToast(lang==='he'?'ההקראה לא נתמכת בדפדפן הזה':'Speech not supported here'); return; }
+    withVoices(function(vs){
+      if(!vs||!vs.length){ showToast(lang==='he'?'אין קול מותקן במכשיר להקראה':'No speech voice installed on this device'); return; }
+      try{ speechSynthesis.cancel(); }catch(e){}
+      ttsQueue=ttsChunks(text); ttsIdx=0; if(!ttsQueue.length) return;
+      speaking=true; ttsIcon(true);
+      if(resumeTimer)clearInterval(resumeTimer);
+      resumeTimer=setInterval(function(){ try{ if(speaking && speechSynthesis.speaking) speechSynthesis.resume(); else if(!speaking){ clearInterval(resumeTimer); resumeTimer=null; } }catch(e){} },6000);
+      speakChunk();
+    });
   }
   function speak(){ if(!lastData) return; const parts=[lastData.verdict,lastData.message,lastData.tip,lastData.closer].filter(Boolean).join('. '); speakText(parts); }
   $('ttsBtn').onclick=speak;
-  $('voiceBtn').onclick=function(){ voicePref=voicePref==='male'?'female':'male'; $('voiceBtn').textContent=voicePref==='male'?'♂':'♀'; if(speaking){ stopSpeak(); setTimeout(speak,120); } };
+  $('voiceBtn').onclick=function(){ voicePref=voicePref==='male'?'female':'male'; $('voiceBtn').textContent=voicePref==='male'?'♂':'♀'; $('voiceBtn').setAttribute('aria-label', lang==='he'?('החלף קול — כרגע '+(voicePref==='male'?'גברי':'נשי')):((voicePref==='male'?'Male':'Female')+' voice')); if(speaking){ const rest=ttsQueue.slice(ttsIdx).join(' '); stopSpeak(); setTimeout(function(){ speakText(rest); },140); } };
 
   // Instagram Story 9:16
   function makeStoryCard(){
     const t=T[lang], ch=t.chars[lastChar], rtl=lang==='he', L=document.body.classList.contains('light'), P=cardPal();
-    const S=rtl?'"Heebo", sans-serif':'"Space Grotesk", sans-serif';
-    const F=rtl?'"Heebo", sans-serif':'"Fraunces", serif';
+    const S=rtl?'"Rubik", sans-serif':'"Space Grotesk", sans-serif';
+    const F=rtl?'"Rubik", sans-serif':'"Fraunces", serif';
     const ac=cardAccent(lastLevel,L);
     const c=document.createElement('canvas'); c.width=1080; c.height=1920; const g=c.getContext('2d');
     g.textAlign='center'; g.direction=rtl?'rtl':'ltr'; g.textBaseline='alphabetic';
@@ -1907,7 +1907,7 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
   function addChatMsg(role,text){
     const d=document.createElement('div'); d.className='cmsg '+role;
     const span=document.createElement('span'); span.className='ctext'; span.textContent=text; d.appendChild(span);
-    if(role==='bot'){ const b=document.createElement('button'); b.type='button'; b.className='cspk'; b.textContent='🔊'; b.setAttribute('aria-label','read aloud'); b.onclick=function(){ speakText(span.textContent); }; d.appendChild(b); }
+    if(role==='bot'){ const b=document.createElement('button'); b.type='button'; b.className='cspk'; b.textContent='🔊'; b.setAttribute('aria-label',lang==='he'?'הקרא את ההודעה':'Read this message aloud'); b.onclick=function(){ speakText(span.textContent); }; d.appendChild(b); }
     $('chatLog').appendChild(d); $('chatLog').scrollTop=$('chatLog').scrollHeight; return d;
   }
   function closeAdd(){ var tg=$('addToggle'),b=$('addBar'); if(tg)tg.classList.add('hidden'); if(b)b.classList.add('hidden'); }
@@ -1935,14 +1935,16 @@ const MEFORAK_HEAD="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAA
   // ===== support / help modal =====
   var SAD_ARTISTS=['אושר כהן','עדן חסון','נסרין קדרי','אייל גולן','מאור אדרי','עומר אדם','שרית חדד','קובי פרץ'];
   $('songBtn').onclick=function(){ var q=lang==='he'?'שירים עצובים פלייליסט':'sad songs playlist'; try{window.open('https://www.youtube.com/results?search_query='+encodeURIComponent(q),'_blank');}catch(e){} showToast(lang==='he'?'פותח פלייליסט עצוב 🎧':'Opening a sad playlist 🎧'); };
-  $('breakBtn').onclick=function(){ $('helpModal').classList.remove('hidden'); };
+  $('breakBtn').onclick=function(){ $('helpModal').classList.remove('hidden'); var c=$('helpClose'); if(c) c.focus(); };
   $('helpClose').onclick=function(){ $('helpModal').classList.add('hidden'); };
   $('helpModal').addEventListener('click',function(e){ if(e.target===$('helpModal')) $('helpModal').classList.add('hidden'); });
+  // Escape closes any open modal (accessibility)
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ var h=$('helpModal'), d=$('donateModal'); if(h&&!h.classList.contains('hidden')) h.classList.add('hidden'); if(d&&!d.classList.contains('hidden')) d.classList.add('hidden'); } });
   $('helpWa').onclick=function(){ const extra=($('helpMsg').value||'').trim(); const base=lang==='he'?'היי, קשה לי / אני מפורק. הגעתי מאתר טרוד.':"Hey, I'm struggling. I came from the Tarud app."; const msg=extra?base+' '+extra:base; window.open('https://wa.me/35795904439?text='+encodeURIComponent(msg),'_blank'); };
   $('helpEran').onclick=function(){ window.open(lang==='he'?'tel:1201':'tel:988','_self'); };
   // ===== donations to the founders (Bit / PayBox). Replace the two URLs with your real personal collect links. =====
   var BIT_URL='https://www.bitpay.co.il/', PAYBOX_URL='https://payboxapp.com/';
-  function openDonate(){ var m=$('donateModal'); if(m) m.classList.remove('hidden'); }
+  function openDonate(){ var m=$('donateModal'); if(m){ m.classList.remove('hidden'); var c=$('donateClose'); if(c) c.focus(); } }
   function closeDonate(){ var m=$('donateModal'); if(m) m.classList.add('hidden'); }
   if($('donateBtn')) $('donateBtn').onclick=openDonate;
   if($('donateBtn2')) $('donateBtn2').onclick=openDonate;
