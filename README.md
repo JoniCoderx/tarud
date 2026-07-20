@@ -63,6 +63,33 @@ npm run build   # runs `prisma generate` then `next build`
 npm run start
 ```
 
+## ☁️ Deploy to Render (free)
+
+A [`render.yaml`](./render.yaml) blueprint is included. On Render:
+
+- **Build command:** `npm install --include=dev && npm run render-build`
+- **Start command:** `npm run start`
+- **Environment variables** (no paid/AI keys):
+
+  | Key | Value |
+  | --- | --- |
+  | `NODE_ENV` | `production` |
+  | `DATABASE_URL` | `file:./dev.db` |
+  | `NEXTAUTH_URL` | your live URL, e.g. `https://whencomp.onrender.com` |
+  | `NEXTAUTH_SECRET` | a long random string (Render can auto-generate) |
+
+Two gotchas the config handles for you:
+
+1. `--include=dev` is required because Render omits devDependencies when
+   `NODE_ENV=production`, but Next's build needs them.
+2. `render-build` runs `prisma db push` (+ seed) so the SQLite tables exist.
+
+> ⚠️ **SQLite is ephemeral on Render's free tier** — the database resets on
+> every deploy/restart (the build re-seeds demo data each time). For durable
+> data, switch Prisma to Postgres (free: Render Postgres / Neon / Supabase) and
+> point `DATABASE_URL` at it. Also make sure `NEXTAUTH_URL` exactly matches your
+> live URL or auth callbacks will fail.
+
 ## 🌍 Environment variables
 
 See [`.env.example`](./.env.example). The only required values are

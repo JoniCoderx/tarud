@@ -1,0 +1,32 @@
+# Render blueprint for When Comp — free plan, no paid services.
+# Docs: https://render.com/docs/blueprint-spec
+#
+# NOTE on the database: Render's free web service has an EPHEMERAL filesystem.
+# The SQLite file (dev.db) is created fresh on every deploy/restart, so data
+# (including new signups) resets on redeploy. That is fine for a demo — the
+# build re-seeds a populated demo each time. For durable data, switch Prisma to
+# Postgres (free options: Render Postgres, Neon, or Supabase) and set
+# DATABASE_URL to that connection string.
+
+services:
+  - type: web
+    name: whencomp
+    runtime: node
+    plan: free
+    # `render-build` installs the client, creates the SQLite tables, seeds demo
+    # data, then builds Next. Render omits devDeps when NODE_ENV=production, so
+    # we force them on for the build (Next needs TypeScript/Tailwind/Prisma CLI).
+    buildCommand: npm install --include=dev && npm run render-build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: file:./dev.db
+      - key: NEXTAUTH_URL
+        # Set this to your live URL after the first deploy (e.g.
+        # https://whencomp.onrender.com). Auth callbacks break if it mismatches.
+        sync: false
+      - key: NEXTAUTH_SECRET
+        # Render generates a strong random value automatically.
+        generateValue: true
