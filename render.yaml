@@ -1,12 +1,10 @@
 # Render blueprint for When Comp — free plan, no paid services.
 # Docs: https://render.com/docs/blueprint-spec
 #
-# NOTE on the database: Render's free web service has an EPHEMERAL filesystem.
-# The SQLite file (dev.db) is created fresh on every deploy/restart, so data
-# (including new signups) resets on redeploy. That is fine for a demo — the
-# build re-seeds a populated demo each time. For durable data, switch Prisma to
-# Postgres (free options: Render Postgres, Neon, or Supabase) and set
-# DATABASE_URL to that connection string.
+# DATABASE: uses a free Neon (Postgres) database so data persists across
+# deploys. Create a project at https://neon.tech, copy the connection string,
+# and paste it into the DATABASE_URL env var in the Render dashboard.
+# Use Neon's DIRECT (non-pooled) connection string so `prisma db push` works.
 
 services:
   - type: web
@@ -22,7 +20,10 @@ services:
       - key: NODE_ENV
         value: production
       - key: DATABASE_URL
-        value: file:./dev.db
+        # Paste your Neon connection string here (Settings -> Environment).
+        # Use the DIRECT / non-pooled string, e.g.
+        # postgresql://USER:PASSWORD@ep-xxx.us-east-1.aws.neon.tech/neondb?sslmode=require
+        sync: false
       - key: NEXTAUTH_URL
         # Set this to your live URL after the first deploy (e.g.
         # https://whencomp.onrender.com). Auth callbacks break if it mismatches.

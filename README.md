@@ -33,7 +33,7 @@ logic. There are no OpenAI/Anthropic keys anywhere.
 - **Next.js 14** (App Router) + **TypeScript**
 - **Tailwind CSS** + `next-themes` (dark default)
 - **Framer Motion** for animations
-- **Prisma ORM** + **SQLite** (`User`, `Match`, `Participant`, `Rating`)
+- **Prisma ORM** + **PostgreSQL** (`User`, `Match`, `Participant`, `Rating`) — free via [Neon](https://neon.tech)
 - **NextAuth** (Credentials provider)
 - No external paid services.
 
@@ -74,21 +74,24 @@ A [`render.yaml`](./render.yaml) blueprint is included. On Render:
   | Key | Value |
   | --- | --- |
   | `NODE_ENV` | `production` |
-  | `DATABASE_URL` | `file:./dev.db` |
+  | `DATABASE_URL` | your **Neon** connection string (direct / non-pooled) |
   | `NEXTAUTH_URL` | your live URL, e.g. `https://whencomp.onrender.com` |
   | `NEXTAUTH_SECRET` | a long random string (Render can auto-generate) |
+
+The database is **Neon (free Postgres)** so data persists across deploys.
+Create a project at [neon.tech](https://neon.tech), copy the **direct
+(non-pooled)** connection string, and paste it into `DATABASE_URL`.
 
 Two gotchas the config handles for you:
 
 1. `--include=dev` is required because Render omits devDependencies when
    `NODE_ENV=production`, but Next's build needs them.
-2. `render-build` runs `prisma db push` (+ seed) so the SQLite tables exist.
+2. `render-build` runs `prisma db push` to create the tables on first deploy
+   (idempotent — it does **not** wipe existing data on later deploys).
 
-> ⚠️ **SQLite is ephemeral on Render's free tier** — the database resets on
-> every deploy/restart (the build re-seeds demo data each time). For durable
-> data, switch Prisma to Postgres (free: Render Postgres / Neon / Supabase) and
-> point `DATABASE_URL` at it. Also make sure `NEXTAUTH_URL` exactly matches your
-> live URL or auth callbacks will fail.
+> To load demo data once, run `npm run db:seed` locally with `DATABASE_URL`
+> pointed at Neon. Make sure `NEXTAUTH_URL` exactly matches your live URL or
+> auth callbacks will fail.
 
 ## 🌍 Environment variables
 
