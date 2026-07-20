@@ -17,7 +17,7 @@ const COLORS = ["#f59e0b", "#ff4655", "#84cc16", "#22d3ee", "#fbbf24", "#8b5cf6"
 
 // Order matters — the first entry is the captain (pinned on top, admin).
 const ROSTER = [
-  { username: "HackerMotherFucker", display: "HackerMotherFucker", steam: "https://steamcommunity.com/id/HackerMotherFucker", captain: true },
+  { username: "HackerMotherFucker", display: "Sharmuta #1",         steam: "https://steamcommunity.com/id/HackerMotherFucker", captain: true },
   { username: "ChutmarikaIL",       display: "ChutMarika!",        steam: "https://steamcommunity.com/id/ChutmarikaIL" },
   { username: "HextoN_O",           display: "HextoN",             steam: "https://steamcommunity.com/id/HextoN_O" },
   { username: "Negroniko",          display: "Negroni",            steam: "https://steamcommunity.com/id/Negroniko" },

@@ -17,7 +17,7 @@ async function main() {
   const hash = await bcrypt.hash("password123", 10);
   // Real roster (captain first = admin), plus a couple extras for waitlist demos.
   const roster = [
-    { u: "HackerMotherFucker", d: "HackerMotherFucker", steam: "https://steamcommunity.com/id/HackerMotherFucker", admin: true },
+    { u: "HackerMotherFucker", d: "Sharmuta #1", steam: "https://steamcommunity.com/id/HackerMotherFucker", admin: true },
     { u: "ChutmarikaIL", d: "ChutMarika!", steam: "https://steamcommunity.com/id/ChutmarikaIL" },
     { u: "HextoN_O", d: "HextoN", steam: "https://steamcommunity.com/id/HextoN_O" },
     { u: "Negroniko", d: "Negroni", steam: "https://steamcommunity.com/id/Negroniko" },
