@@ -1,0 +1,45 @@
+# When Comp — Dockerfile (used by Render's Docker runtime).
+# Multi-stage: install + build, then a lean runtime image.
+
+FROM node:22-slim AS build
+WORKDIR /app
+# Prisma needs openssl on Debian slim.
+RUN apt-get update -y && apt-get install -y --no-install-recommends openssl \
+  && rm -rf /var/lib/apt/lists/*
+
+# Install ALL deps (devDeps needed to build Next).
+COPY package.json package-lock.json ./
+COPY prisma ./prisma
+RUN npm ci --include=dev
+
+# Build the app (prisma generate + next build; no DB connection needed).
+COPY . .
+RUN npm run build
+
+# ---- Runtime image ----
+FROM node:22-slim AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+RUN apt-get update -y && apt-get install -y --no-install-recommends openssl \
+  && rm -rf /var/lib/apt/lists/*
+
+# Copy the built app and its dependencies.
+COPY --from=build /app/package.json /app/package-lock.json ./
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/.next ./.next
+COPY --from=build /app/public ./public
+COPY --from=build /app/prisma ./prisma
+COPY --from=build /app/next.config.mjs ./next.config.mjs
+
+# Render injects PORT; Next's `start` respects it.
+EXPOSE 3000
+
+# Startup is resilient to Neon free-tier cold starts (57P01). db push is retried
+# generously (~2 min window) to wake a suspended Neon instance and migrate the
+# schema before serving. Crucially, the server ALWAYS starts afterward — even if
+# the migration ultimately fails — because ABORTING the boot makes Render keep
+# serving the PREVIOUS (possibly old/broken) deploy, which is worse than a live
+# app that degrades gracefully. Every page-level query is wrapped in a safe()
+# fallback (empty state) so a transient DB issue can't white-screen the app, and
+# the schema self-heals on the next boot once Neon is awake.
+CMD ["sh", "-c", "echo 'Migrating DB (tolerating Neon cold start)...'; for i in $(seq 1 20); do npx prisma db push --skip-generate --accept-data-loss && { echo 'db push ok'; break; } || { echo \"db push retry $i/20...\"; sleep 6; }; done; node prisma/bootstrap.mjs || echo 'bootstrap skipped'; echo 'Starting server...'; npm run start"]
